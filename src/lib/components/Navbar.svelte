@@ -17,4 +17,10 @@
 			? 'border-orange-500 hover:border-b-orange-500'
 			: 'border-transparent hover:border-b-gray-900'} ">Personality Test</a
 	>
+	<a
+		href="/custom-test"
+		class="flex h-full items-center border-b-2 px-4 {$page.url.pathname === '/custom-test'
+			? 'border-orange-500 hover:border-b-orange-500'
+			: 'border-transparent hover:border-b-gray-900'} ">Custom Test</a
+	>
 </nav>
