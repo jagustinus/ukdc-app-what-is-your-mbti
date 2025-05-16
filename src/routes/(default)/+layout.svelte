@@ -5,7 +5,7 @@
 </script>
 
 <div class="min-h-screen bg-zinc-800">
-	<header>
+	<header class="sticky top-0 right-0 w-full">
 		<Navbar />
 	</header>
 

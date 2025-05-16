@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 </script>
 
-<nav class="flex h-16 items-center justify-start gap-3 bg-gray-600 text-zinc-100">
+<nav class="flex h-16 items-center justify-start gap-3 bg-gray-600 text-zinc-100 shadow-xl">
 	<a
 		href="/recommend-fields"
 		class="flex h-full items-center border-b-2 px-4 {$page.url.pathname === '/recommend-fields'
