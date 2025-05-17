@@ -100,7 +100,7 @@
 		transition:fade={{ duration: 1000 }}
 		class="flex h-screen w-full items-center justify-center"
 	>
-		<div class="flex flex-col items-center justify-center gap-5">
+		<div class="flex flex-col items-center justify-center gap-5 text-center">
 			<p class="text-3xl font-semibold">Your MBTI result is:</p>
 			<p class="text-4xl font-bold">{mbti_results}</p>
 			{#if data.recommendations[mbti_results.toLowerCase() as keyof typeof data.recommendations]}{/if}

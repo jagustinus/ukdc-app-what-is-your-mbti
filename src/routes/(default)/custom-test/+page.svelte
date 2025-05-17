@@ -282,7 +282,7 @@
 	}
 
 	// We no longer need to check for data.error since we're using client-side CSV parsing
-	const hasError = $derived(false); // We'll use csvError instead
+	// const hasError = $derived(false); // We'll use csvError instead
 </script>
 
 {#if !hasUploadedCsv}
@@ -309,7 +309,7 @@
 					type="file"
 					accept=".csv"
 					onchange={handleCsvUpload}
-					class="w-full rounded-sm border border-zinc-700 bg-zinc-800 px-4 py-2 file:mr-4 file:rounded-sm file:border-0 file:bg-blue-500 file:px-4 file:py-2 file:text-white hover:file:bg-blue-600"
+					class="w-full rounded-sm border border-zinc-700 bg-zinc-800 px-4 py-2 file:mr-4 file:rounded-sm file:border-0 file:bg-orange-700 file:px-4 file:py-2 file:text-white hover:file:bg-orange-800 file:cursor-pointer"
 				/>
 
 				{#if csvError}
@@ -349,7 +349,7 @@
 		transition:fade={{ duration: 1000 }}
 		class="flex h-screen w-full items-center justify-center"
 	>
-		<div class="flex flex-col items-center justify-center gap-5">
+		<div class="flex flex-col items-center justify-center gap-5 text-center">
 			<p class="text-3xl font-semibold">Your MBTI result is:</p>
 			<p class="text-4xl font-bold">{mbti_results}</p>
 			{#if recommendations[mbti_results.toLowerCase() as keyof typeof recommendations]}
@@ -362,7 +362,7 @@
 
 			<button
 				onclick={() => (hasUploadedCsv = false)}
-				class="mt-8 rounded-sm bg-blue-500 px-5 py-2 font-medium text-white hover:bg-blue-600"
+				class="mt-8 rounded-sm bg-orange-700 px-5 py-2 font-medium text-white hover:bg-orange-800"
 			>
 				Start New Test
 			</button>
@@ -378,7 +378,7 @@
 
 			<button
 				onclick={() => (hasUploadedCsv = false)}
-				class="mt-4 rounded-sm bg-blue-500 px-5 py-2 font-medium text-white hover:bg-blue-600"
+				class="mt-4 rounded-sm bg-orange-700 px-5 py-2 font-medium text-white hover:bg-blue-600"
 			>
 				Upload New CSV File
 			</button>
