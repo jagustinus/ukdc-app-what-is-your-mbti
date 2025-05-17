@@ -1,17 +1,17 @@
 export const load = () => {
 	const ei_questions = [
-		'Do you generally prefer being around other people rather than being alone?',
-		'Do you find yourself energized after social gatherings?',
-		'Do you tend to speak before thinking things through?',
-		'Do you enjoy meeting new people on a regular basis?',
-		'Do you prefer working in group settings over working alone?',
-		'Are you comfortable speaking up in large meetings or groups?',
-		'Do you like being the center of attention?',
-		'Do you need alone time to recharge after socializing?',
-		'Do you prefer thinking through ideas before sharing them?',
-		'Do you find it draining to be in social situations for extended periods?',
-		'Do you prefer deep one-on-one conversations to large group discussions?',
-		'Do you often reflect internally before taking action?'
+		'Apakah Anda umumnya lebih suka berada di sekitar orang lain daripada sendirian?',
+		'Apakah Anda merasa berenergi setelah menghadiri acara sosial?',
+		'Apakah Anda cenderung berbicara sebelum memikirkan sesuatu dengan matang?',
+		'Apakah Anda senang bertemu orang baru secara rutin?',
+		'Apakah Anda lebih suka bekerja dalam kelompok daripada bekerja sendiri?',
+		'Apakah Anda merasa nyaman berbicara di hadapan banyak orang atau kelompok besar?',
+		'Apakah Anda suka menjadi pusat perhatian?',
+		'Apakah Anda membutuhkan waktu sendiri untuk mengisi ulang energi setelah bersosialisasi?',
+		'Apakah Anda lebih suka memikirkan ide terlebih dahulu sebelum membagikannya?',
+		'Apakah Anda merasa lelah jika berada dalam situasi sosial dalam waktu lama?',
+		'Apakah Anda lebih suka percakapan mendalam satu lawan satu daripada diskusi kelompok besar?',
+		'Apakah Anda sering merenung secara internal sebelum bertindak?'
 	];
 
 	const list_e_questions = {
@@ -25,18 +25,18 @@ export const load = () => {
 	};
 
 	const sn_questions = [
-		'Are you more interested in concrete facts and details than abstract theories?',
-		'Do you trust experience and practical applications more than theoretical ideas?',
-		'Do you focus more on the present reality than future possibilities?',
-		'Do you prefer step-by-step instructions over figuring things out along the way?',
-		'Are you more practical than imaginative?',
-		'Do you prefer established methods over experimental approaches?',
-		'Do you value tradition and proven history?',
-		'Do you enjoy thinking about possibilities and the big picture?',
-		'Do you often find patterns and connections that others miss?',
-		'Are you frequently thinking about the future and what could be?',
-		'Do you enjoy theoretical discussions and abstract concepts?',
-		'Do you prefer innovation over tradition?'
+		'Apakah Anda lebih tertarik pada fakta dan detail konkret daripada teori abstrak?',
+		'Apakah Anda lebih mempercayai pengalaman dan penerapan praktis daripada gagasan teoretis?',
+		'Apakah Anda lebih fokus pada kenyataan saat ini daripada kemungkinan di masa depan?',
+		'Apakah Anda lebih suka petunjuk langkah demi langkah daripada mencari tahu sendiri?',
+		'Apakah Anda lebih bersifat praktis daripada imajinatif?',
+		'Apakah Anda lebih suka metode yang sudah terbukti daripada pendekatan eksperimental?',
+		'Apakah Anda menghargai tradisi dan sejarah yang sudah terbukti?',
+		'Apakah Anda senang memikirkan kemungkinan dan gambaran besar?',
+		'Apakah Anda sering menemukan pola dan hubungan yang tidak disadari orang lain?',
+		'Apakah Anda sering memikirkan masa depan dan apa yang mungkin terjadi?',
+		'Apakah Anda senang berdiskusi tentang konsep teoretis dan abstrak?',
+		'Apakah Anda lebih suka inovasi daripada tradisi?'
 	];
 
 	const list_s_questions = {
@@ -50,18 +50,18 @@ export const load = () => {
 	};
 
 	const tf_questions = [
-		'Do you value objective truth over maintaining social harmony?',
-		'When making decisions, do you prioritize logic over personal values?',
-		'Are you comfortable with constructive criticism and debates?',
-		'Do you prefer analyzing things objectively rather than considering feelings?',
-		"Do you find it easy to give honest feedback even if it might hurt someone's feelings?",
-		'Do you make decisions based primarily on facts and evidence?',
-		'Do you value efficiency over cooperation?',
-		"Do you often consider how decisions will affect other people's feelings?",
-		'Do you value personal expressions of appreciation?',
-		'Is maintaining harmony in a group more important than being right?',
-		'Do you make decisions based on what feels right?',
-		"Do you empathize strongly with others' struggles?"
+		'Apakah Anda lebih menghargai kebenaran objektif daripada menjaga keharmonisan sosial?',
+		'Dalam mengambil keputusan, apakah Anda lebih mengutamakan logika daripada nilai pribadi?',
+		'Apakah Anda nyaman menerima kritik membangun dan perdebatan?',
+		'Apakah Anda lebih suka menganalisis sesuatu secara objektif daripada mempertimbangkan perasaan?',
+		'Apakah Anda mudah memberikan umpan balik jujur meskipun bisa menyakiti perasaan orang lain?',
+		'Apakah Anda membuat keputusan terutama berdasarkan fakta dan bukti?',
+		'Apakah Anda lebih menghargai efisiensi daripada kerja sama?',
+		'Apakah Anda sering mempertimbangkan bagaimana keputusan akan memengaruhi perasaan orang lain?',
+		'Apakah Anda menghargai ungkapan apresiasi secara pribadi?',
+		'Apakah menjaga keharmonisan dalam kelompok lebih penting daripada menjadi benar?',
+		'Apakah Anda membuat keputusan berdasarkan apa yang terasa benar?',
+		'Apakah Anda sangat berempati terhadap kesulitan orang lain?'
 	];
 
 	const list_t_questions = {
@@ -75,18 +75,18 @@ export const load = () => {
 	};
 
 	const jp_questions = [
-		'Do you prefer to have a detailed plan rather than being spontaneous?',
-		'Does having unfinished business or unresolved decisions bother you?',
-		'Do you prefer finishing one project completely before starting another?',
-		'Do you like having a structured daily routine?',
-		'Do you make to-do lists and schedules regularly?',
-		'Do you arrive early or exactly on time for appointments?',
-		'Are you stressed by last-minute changes to plans?',
-		'Do you like keeping your options open as long as possible?',
-		'Do you enjoy adapting to new situations and changes?',
-		'Are deadlines more like suggestions to you?',
-		'Do you find routines limiting or boring?',
-		'Do you prefer flexibility over structure in your work and life?'
+		'Apakah Anda lebih suka memiliki rencana terperinci daripada bersikap spontan?',
+		'Apakah Anda merasa terganggu jika ada urusan yang belum selesai atau keputusan yang belum diambil?',
+		'Apakah Anda lebih suka menyelesaikan satu proyek sepenuhnya sebelum memulai yang lain?',
+		'Apakah Anda senang memiliki rutinitas harian yang terstruktur?',
+		'Apakah Anda sering membuat daftar tugas dan jadwal secara teratur?',
+		'Apakah Anda datang lebih awal atau tepat waktu untuk janji temu?',
+		'Apakah Anda merasa stres jika ada perubahan mendadak pada rencana?',
+		'Apakah Anda suka menjaga pilihan tetap terbuka selama mungkin?',
+		'Apakah Anda senang beradaptasi dengan situasi dan perubahan baru?',
+		'Apakah tenggat waktu bagi Anda lebih seperti saran daripada aturan?',
+		'Apakah Anda merasa rutinitas itu membatasi atau membosankan?',
+		'Apakah Anda lebih suka fleksibilitas daripada struktur dalam pekerjaan dan kehidupan Anda?'
 	];
 
 	const list_j_questions = {

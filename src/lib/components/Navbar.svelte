@@ -1,8 +1,12 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import logo from '$lib/images/logo.png';
 </script>
 
 <nav class="flex h-16 items-center justify-start gap-3 bg-gray-600 text-zinc-100 shadow-xl">
+  <a href="/" class="flex h-full items-center border-b-2 px-4 border-transparent">
+    <img src={logo} alt="Logo" class="h-12 w-23" />
+  </a>
   <a
     href="/recommend-fields"
     class="flex h-full items-center border-b-2 px-4 {$page.url.pathname === '/recommend-fields'

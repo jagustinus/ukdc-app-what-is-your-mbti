@@ -281,8 +281,15 @@
 		URL.revokeObjectURL(url);
 	}
 
-	// We no longer need to check for data.error since we're using client-side CSV parsing
-	// const hasError = $derived(false); // We'll use csvError instead
+  // data user input
+  let name: string = $state('');
+  let phoneNumber: string = $state('');
+
+  let isValidPhoneNumber: boolean = $derived.by(() => {
+    const phoneRegex = new RegExp("^\\+?[1-9]\\d{6,14}$");
+    return phoneRegex.test(phoneNumber);
+  })
+
 </script>
 
 {#if !hasUploadedCsv}
@@ -293,6 +300,21 @@
 				Upload your own CSV file with MBTI questions to start the test. The CSV must include
 				"dimension" and "question" columns.
 			</p>
+
+      <div class="flex w-full flex-col gap-2">
+        <label for="name">Name</label>
+        <input bind:value={name} placeholder="Enter your name" class="border-2 py-2 px-4 border-zinc-700 bg-zinc-800 rounded-sm text-white placeholder:text-gray-500 focus-visible:border-gray-500 focus:border-2  active:border-gray-500"/>
+      </div>
+
+      <div class="flex w-full flex-col gap-2">
+        <label for="phone_number">Phone Number</label>
+        <input bind:value={phoneNumber}  placeholder="Enter your phone number" class="border-2 py-2 px-4 border-zinc-700 bg-zinc-800 rounded-sm text-white placeholder:text-gray-500 focus-visible:border-gray-500 focus:border-2  active:border-gray-500"/>
+        {#if isValidPhoneNumber }
+          <p class="mt-1 text-sm text-green-400">Phone number is valid.</p>
+        {:else if !isValidPhoneNumber && phoneNumber.length > 0}
+          <p class="mt-1 text-sm text-red-400">Phone number is invalid.</p>
+        {/if}
+      </div>
 
 			<div class="flex w-full flex-col gap-2">
 				<div class="flex items-center justify-between">
@@ -354,31 +376,31 @@
 			<p class="text-4xl font-bold">{mbti_results}</p>
 			{#if recommendations[mbti_results.toLowerCase() as keyof typeof recommendations]}
 				<p class="text-xl font-medium italic">
-					"Your fields in {mbti_results} are: {recommendations[
+					"{name}, your fields in {mbti_results} are: {recommendations[
 						mbti_results.toLowerCase() as keyof typeof recommendations
 					]}"
 				</p>
 			{/if}
 
 			<button
-				onclick={() => (hasUploadedCsv = false)}
+				onclick={() => {hasUploadedCsv = false; name = ''; phoneNumber = ''}}
 				class="mt-8 rounded-sm bg-orange-700 px-5 py-2 font-medium text-white hover:bg-orange-800"
 			>
 				Start New Test
 			</button>
 		</div>
 	</div>
-{:else if questionsData.length === 0 || questionsData[type_of_question]?.questions.length === 0}
+{:else if questionsData.length === 0 || questionsData[type_of_question]?.questions.length === 0 || !isValidPhoneNumber}
 	<div class="flex h-screen w-full items-center justify-center">
 		<div class="flex flex-col items-center justify-center gap-5">
 			<p class="text-2xl font-semibold">No questions found</p>
 			<p class="text-lg">
-				Please make sure your CSV file is properly formatted and contains questions.
+				Please make sure your CSV file is properly formatted and contains questions or your phone number is invalid.
 			</p>
 
 			<button
 				onclick={() => (hasUploadedCsv = false)}
-				class="mt-4 rounded-sm bg-orange-700 px-5 py-2 font-medium text-white hover:bg-blue-600"
+				class="mt-4 rounded-sm bg-orange-700 px-5 py-2 font-medium text-white hover:bg-orange-800"
 			>
 				Upload New CSV File
 			</button>
@@ -394,7 +416,7 @@
 			</div>
 
 			<button
-				onclick={() => (hasUploadedCsv = false)}
+				onclick={() => {hasUploadedCsv = false; name = ''; phoneNumber = ''}}
 				class="text-sm text-zinc-400 underline hover:text-white"
 			>
 				Cancel Test

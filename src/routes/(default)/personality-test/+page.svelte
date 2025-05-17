@@ -113,11 +113,13 @@
 	</div>
 {:else}
 	<div transition:fade={{ duration: 250 }} class="m-16 flex h-[38rem] max-w-full flex-col gap-5">
-		<div
-			class="flex h-12 w-12 items-center justify-center rounded-xs bg-gray-600 text-center text-2xl font-semibold"
-		>
-			<p>{data.questions[type_of_question].dimension.toUpperCase()}</p>
-		</div>
+    <div class="max-w-3xl flex justify-between mx-auto w-full">
+      <div
+        class="flex h-12 w-12 items-center justify-center rounded-xs bg-gray-600 text-center text-2xl font-semibold"
+      >
+        <p>{data.questions[type_of_question].dimension.toUpperCase()}</p>
+      </div>
+    </div>
 		<div
 			class="mx-auto flex h-3/5 w-full max-w-3xl items-center justify-center rounded-sm bg-zinc-900 px-10 text-center text-wrap shadow-lg"
 		>

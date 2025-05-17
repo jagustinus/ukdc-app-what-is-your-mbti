@@ -12,7 +12,7 @@
     <p>Input your MBTI type, and see recommended field in Informatics</p>
     <div class="w-2xl flex items-center justify-center">
       <input bind:value={mbti} oninput={() => hasSubmitted = false} type="text" placeholder="Enter your MBTI type"
-             class="border-2 border-transparent p-2 m-4 rounded-sm text-gray-500 placeholder:text-gray-400 focus-visible:border-gray-500 focus:border-2  active:border-gray-500">
+             class="border-2 p-2 m-4 rounded-sm text-gray-500 placeholder:text-gray-500 focus-visible:border-gray-500 focus:border-2 border-zinc-700 bg-zinc-800 active:border-gray-500">
       <button onclick={() => hasSubmitted = true }
               class="border-2 border-transparent cursor-pointer font-semibold rounded-sm bg-orange-700 py-2 px-4 active:scale-[0.98] active:transition-all"
       >Send
