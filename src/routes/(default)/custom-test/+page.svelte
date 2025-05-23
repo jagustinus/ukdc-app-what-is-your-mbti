@@ -253,22 +253,22 @@
 		// Sample questions with quotes around text to handle any commas in content
 		const sampleCsv =
 			'dimension,question\n' +
-			'e,"Do you feel energized after spending time with a group of people?"\n' +
-			'e,"Do you prefer speaking rather than listening in conversations?"\n' +
-			'i,"Do you need time alone to recharge after social activities?"\n' +
-			'i,"Do you prefer to work on projects alone rather than in groups?"\n' +
-			's,"Do you focus more on facts and details rather than concepts and ideas?"\n' +
-			's,"Do you prefer practical solutions over theoretical ones?"\n' +
-			'n,"Do you often think about future possibilities?"\n' +
-			'n,"Do you enjoy thinking about abstract concepts?"\n' +
-			't,"Do you make decisions based on logic rather than feelings?"\n' +
-			't,"Do you value truth over tact?"\n' +
-			'f,"Do you consider how your decisions will impact others?"\n' +
-			'f,"Do you value harmony and cooperation in a team?"\n' +
-			'j,"Do you prefer to plan activities well in advance?"\n' +
-			'j,"Is having a schedule important to you?"\n' +
-			'p,"Do you prefer to keep your options open?"\n' +
-			'p,"Do you enjoy spontaneity and flexibility?"';
+      'e, "Apakah Anda merasa berenergi setelah menghabiskan waktu dengan sekelompok orang?"\n' +
+      'e, "Apakah Anda lebih suka berbicara daripada mendengarkan dalam percakapan?"\n' +
+      'i, "Apakah Anda membutuhkan waktu sendiri untuk memulihkan diri setelah kegiatan sosial? "\n' +
+      'i, "Apakah Anda lebih suka mengerjakan proyek sendirian daripada berkelompok?"\n' +
+      's, "Apakah Anda lebih fokus pada fakta dan detail daripada konsep dan ide?"\n' +
+      's, "Apakah Anda lebih suka solusi praktis daripada solusi teoritis?"\n' +
+      'n, "Apakah Anda sering memikirkan kemungkinan di masa depan? "\n' +
+      'n, "Apakah Anda senang memikirkan konsep-konsep abstrak?"\n' +
+      't, "Apakah Anda membuat keputusan berdasarkan logika daripada perasaan?"\n' +
+      't, "Apakah Anda lebih menghargai kebenaran daripada kebijaksanaan?"\n' +
+      'f, "Apakah Anda mempertimbangkan dampak keputusan Anda terhadap orang lain? "\n' +
+      'f, "Apakah Anda menghargai keharmonisan dan kerja sama dalam tim?"\n' +
+      'j, "Apakah Anda lebih suka merencanakan kegiatan jauh-jauh hari?"\n' +
+      'j, "Apakah memiliki jadwal itu penting untuk Anda?"\n' +
+      'p, "Apakah Anda lebih suka membiarkan pilihan-pilihan Anda tetap terbuka?"\n' +
+      'p, "Apakah Anda menyukai spontanitas dan fleksibilitas?"';
 
 		const blob = new Blob([sampleCsv], { type: 'text/csv' });
 		const url = URL.createObjectURL(blob);
