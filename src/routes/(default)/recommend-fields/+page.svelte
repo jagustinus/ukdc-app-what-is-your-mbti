@@ -6,6 +6,10 @@
   let hasSubmitted = $state(false);
 </script>
 
+<svelte:head>
+  <title>Recommend Fields</title>
+</svelte:head>
+
 <div class="flex min-h-screen justify-center items-center">
   <div class="flex flex-col items-center text-center">
     <h1 class="text-2xl font-bold mb-4">Welcome to the Recommend Fields Page</h1>

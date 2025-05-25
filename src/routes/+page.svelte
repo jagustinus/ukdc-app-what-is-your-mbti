@@ -22,6 +22,10 @@
 
 </script>
 
+<svelte:head>
+  <title>Home</title>
+</svelte:head>
+
 <div class="bg-zinc-800 min-h-screen text-white flex flex-col items-center justify-center">
   <div class="max-w-xl">
     <img src={logo} alt="logo">

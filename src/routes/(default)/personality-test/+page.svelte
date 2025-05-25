@@ -95,6 +95,10 @@
 	};
 </script>
 
+<svelte:head>
+  <title>Personality Test</title>
+</svelte:head>
+
 {#if usedPercentage >= 100}
 	<div
 		transition:fade={{ duration: 1000 }}
@@ -124,20 +128,20 @@
 			class="mx-auto flex h-3/5 w-full max-w-3xl items-center justify-center rounded-sm bg-zinc-900 px-10 text-center text-wrap shadow-lg"
 		>
 			<p class="text-3xl font-semibold max-md:text-xl">
-				{data.questions[type_of_question].questions[number_of_questions]}
+				{data.questions[type_of_question].questions[number_of_questions].question}
 			</p>
 		</div>
 		<div class="mx-auto flex h-2/5 w-full max-w-3xl gap-3 max-md:flex-col-reverse">
 			<button
 				onclick={handleNextQuestion}
-				class="grow cursor-pointer rounded-xs bg-red-300 px-3 text-2xl font-semibold active:scale-[0.98] active:transition-all"
-				>No</button
+				class="grow cursor-pointer rounded-xs bg-red-300 px-3 text-xl font-semibold active:scale-[0.98] active:transition-all"
+				>{data.questions[type_of_question].questions[number_of_questions].answer.answer_no}</button
 			>
 			<button
 				id="yes-button"
 				onclick={handleNextQuestion}
-				class="grow cursor-pointer rounded-xs bg-blue-300 px-3 text-2xl font-semibold active:scale-[0.98] active:transition-all"
-				>Yes</button
+				class="grow cursor-pointer rounded-xs bg-blue-300 px-3 text-xl font-semibold active:scale-[0.98] active:transition-all"
+        >{data.questions[type_of_question].questions[number_of_questions].answer.answer_no}</button
 			>
 		</div>
 		<div class="mx-auto flex w-full max-w-3xl flex-col gap-2">

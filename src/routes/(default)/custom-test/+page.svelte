@@ -292,6 +292,10 @@
 
 </script>
 
+<svelte:head>
+  <title>Custom Personality Test</title>
+</svelte:head>
+
 {#if !hasUploadedCsv}
 	<div class="flex h-screen w-full items-center justify-center">
 		<div class="flex max-w-3xl flex-col items-center justify-center gap-8 p-8">
