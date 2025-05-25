@@ -307,12 +307,12 @@
 
       <div class="flex w-full flex-col gap-2">
         <label for="name">Name</label>
-        <input bind:value={name} placeholder="Enter your name" class="border-2 py-2 px-4 border-zinc-700 bg-zinc-800 rounded-sm text-white placeholder:text-gray-500 focus-visible:border-gray-500 focus:border-2  active:border-gray-500"/>
+        <input bind:value={name} placeholder="Enter your name" class="border-2 py-2 px-4 border-zinc-700 bg-transparent rounded-sm text-white placeholder:text-gray-500 focus-visible:border-gray-500 focus:border-2  active:border-gray-500"/>
       </div>
 
       <div class="flex w-full flex-col gap-2">
         <label for="phone_number">Phone Number</label>
-        <input bind:value={phoneNumber}  placeholder="Enter your phone number" class="border-2 py-2 px-4 border-zinc-700 bg-zinc-800 rounded-sm text-white placeholder:text-gray-500 focus-visible:border-gray-500 focus:border-2  active:border-gray-500"/>
+        <input bind:value={phoneNumber}  placeholder="Enter your phone number" class="border-2 py-2 px-4 border-zinc-700 bg-transparent rounded-sm text-white placeholder:text-gray-500 focus-visible:border-gray-500 focus:border-2  active:border-gray-500"/>
         {#if isValidPhoneNumber }
           <p class="mt-1 text-sm text-green-400">Phone number is valid.</p>
         {:else if !isValidPhoneNumber && phoneNumber.length > 0}
@@ -335,7 +335,7 @@
 					type="file"
 					accept=".csv"
 					onchange={handleCsvUpload}
-					class="w-full rounded-sm border border-zinc-700 bg-zinc-800 px-4 py-2 file:mr-4 file:rounded-sm file:border-0 file:bg-orange-700 file:px-4 file:py-2 file:text-white hover:file:bg-orange-800 file:cursor-pointer"
+					class="w-full rounded-sm border border-zinc-700 bg-transparent px-4 py-2 file:mr-4 file:rounded-sm file:border-0 file:bg-orange-700 file:px-4 file:py-2 file:text-white hover:file:bg-orange-800 file:cursor-pointer"
 				/>
 
 				{#if csvError}
@@ -352,7 +352,7 @@
 				</div>
 			{/if}
 
-			<div class="w-full rounded-sm bg-zinc-800 p-5">
+			<div class="w-full rounded-sm  p-5">
 				<h3 class="mb-3 text-lg font-bold">CSV Format Requirements:</h3>
 				<ul class="list-inside list-disc space-y-2">
 					<li>Must have a header row with "dimension" and "question" columns</li>
@@ -362,7 +362,7 @@
 					</li>
 					<li>Each dimension should have at least one question</li>
 					<li>
-						Example: <code class="rounded-xs bg-zinc-900 px-1"
+						Example: <code class="rounded-xs bg-zinc-200 px-1"
 							>e,Do you enjoy meeting new people?</code
 						>
 					</li>

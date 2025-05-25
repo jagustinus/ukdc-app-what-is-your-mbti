@@ -26,7 +26,7 @@
   <title>Home</title>
 </svelte:head>
 
-<div class="bg-zinc-800 min-h-screen text-white flex flex-col items-center justify-center">
+<div class="bg-zinc-100 min-h-screen text-zinc-800 flex flex-col items-center justify-center">
   <div class="max-w-xl">
     <img src={logo} alt="logo">
   </div>
@@ -38,7 +38,7 @@
     class="flex justify-between items-center mt-8 max-w-7xl w-full px-2 gap-10 max-md:flex-col-reverse max-md:gap-2">
     {#each content as item, index (index)}
       <div
-        class="flex flex-col gap-3 border-2 border-gray-600 w-1/3 p-6 rounded-md max-md:w-full hover:border-orange-800 transition-all duration-500 ease-in-out cursor-pointer">
+        class="flex flex-col gap-3 border-2 border-gray-600 w-1/3 p-6 rounded-md max-md:w-full hover:border-orange-600 transition-all duration-500 ease-in-out cursor-pointer">
         <p class="text-xl font-bold">{item.title}</p>
         <p class="text-base">{item.description}</p>
         <div class="flex">

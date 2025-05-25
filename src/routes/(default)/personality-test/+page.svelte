@@ -119,31 +119,33 @@
 	<div transition:fade={{ duration: 250 }} class="m-16 flex h-[38rem] max-w-full flex-col gap-5">
 		<div class="mx-auto flex w-full max-w-3xl justify-between">
 			<div
-				class="flex h-12 w-12 items-center justify-center rounded-xs bg-gray-600 text-center text-2xl font-semibold"
+				class="flex h-12 w-12 items-center justify-center rounded-xs bg-gray-600 text-zinc-100 text-center text-2xl font-semibold"
 			>
 				<p>{data.questions[type_of_question].dimension.toUpperCase()}</p>
 			</div>
 		</div>
 		<div
-			class="mx-auto flex h-3/5 w-full max-w-3xl items-center justify-center rounded-sm bg-zinc-900 px-10 text-center text-wrap shadow-lg"
+			class="mx-auto flex h-3/5 w-full max-w-3xl items-center justify-center rounded-sm bg-zinc-400 px-10 text-center text-wrap shadow-lg"
 		>
 			<p class="text-3xl font-semibold max-md:text-xl">
 				{data.questions[type_of_question].questions[number_of_questions].question}
 			</p>
 		</div>
 		<div class="mx-auto flex h-2/5 w-full max-w-3xl gap-3 max-md:flex-col-reverse">
-			<button
+      <button
 				onclick={handleNextQuestion}
-				class="grow cursor-pointer rounded-xs bg-red-300 px-3 text-xl font-semibold active:scale-[0.98] active:transition-all"
-				>{data.questions[type_of_question].questions[number_of_questions].answer.answer_no}</button
+				class="grow basis-1/2 cursor-pointer rounded-xs bg-red-300 px-3 py-4 text-xl font-semibold active:scale-[0.98] active:transition-all"
 			>
+				{data.questions[type_of_question].questions[number_of_questions].answer.answer_no}
+			</button>
 			<button
 				id="yes-button"
 				onclick={handleNextQuestion}
-				class="grow cursor-pointer rounded-xs bg-blue-300 px-3 text-xl font-semibold active:scale-[0.98] active:transition-all"
-        >{data.questions[type_of_question].questions[number_of_questions].answer.answer_no}</button
+				class="grow basis-1/2 cursor-pointer rounded-xs bg-blue-300 px-3 py-4 text-xl font-semibold active:scale-[0.98] active:transition-all"
 			>
-		</div>
+				{data.questions[type_of_question].questions[number_of_questions].answer.answer_yes}
+			</button>
+    </div>
 		<div class="mx-auto flex w-full max-w-3xl flex-col gap-2">
 			<div class="flex items-center justify-between text-sm font-normal">
 				<span id={labelId}> Question </span>
@@ -155,7 +157,7 @@
 				{value}
 				{min}
 				{max}
-				class="shadow-mini-inset relative h-[15px] overflow-hidden rounded-full bg-zinc-900"
+				class="shadow-mini-inset relative h-[15px] overflow-hidden rounded-full bg-zinc-300"
 			>
 				<div
 					class="shadow-mini-inset h-full w-full flex-1 rounded-full transition-all duration-1000 ease-in-out {color}"
