@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Meter, useId } from 'bits-ui';
-	import { fade } from 'svelte/transition';
+  import { fade } from 'svelte/transition';
 	const { data } = $props();
 
 	let value = $state(0);
@@ -93,16 +93,84 @@
 			number_of_questions = 0;
 		}
 	};
+
+	// Function to print the MBTI result
+	const printResult = () => {
+		const printWindow = window.open('', '_blank');
+		if (!printWindow) return;
+
+		const recommendations = data.recommendations[mbti_results.toLowerCase() as keyof typeof data.recommendations];
+
+		printWindow.document.write(`
+			<html>
+				<head>
+					<title>Your MBTI Result</title>
+					<style>
+						body {
+							font-family: Arial, sans-serif;
+							line-height: 1.6;
+							max-width: 800px;
+							margin: 0 auto;
+							padding: 2rem;
+						}
+						.header {
+							text-align: center;
+							margin-bottom: 2rem;
+						}
+						.result {
+							text-align: center;
+							margin-bottom: 1.5rem;
+						}
+						.mbti {
+							font-size: 3rem;
+							font-weight: bold;
+							margin: 1rem 0;
+						}
+						.recommendations {
+							font-style: italic;
+							margin-top: 1rem;
+						}
+						.footer {
+							margin-top: 3rem;
+							text-align: center;
+							font-size: 0.8rem;
+							color: #666;
+						}
+					</style>
+				</head>
+				<body>
+					<div class="header">
+						<h1>Your MBTI Personality Test Result</h1>
+						<p>Generated on ${new Date().toLocaleDateString()}</p>
+					</div>
+					<div class="result">
+						<h2>Your personality type is:</h2>
+						<div class="mbti">${mbti_results}</div>
+						<div class="recommendations">
+							<p>"You fields in ${mbti_results} are: ${recommendations}"</p>
+						</div>
+					</div>
+					<div class="footer">
+						<p>Thank you for taking the MBTI personality test.</p>
+					</div>
+				</body>
+			</html>
+		`);
+
+		printWindow.document.close();
+		printWindow.print();
+	};
+
 </script>
 
 <svelte:head>
-  <title>Personality Test</title>
+	<title>Personality Test</title>
 </svelte:head>
 
 {#if usedPercentage >= 100}
 	<div
 		transition:fade={{ duration: 1000 }}
-		class="flex h-screen w-full items-center justify-center"
+		class="flex h-screen w-full flex-col items-center justify-center"
 	>
 		<div class="flex flex-col items-center justify-center gap-5 text-center">
 			<p class="text-3xl font-semibold">Your MBTI result is:</p>
@@ -113,13 +181,23 @@
 					mbti_results.toLowerCase() as keyof typeof data.recommendations
 				]}"
 			</p>
+
+			<!-- Print and Download buttons -->
+			<div class="mt-8 flex gap-4">
+				<button
+					onclick={printResult}
+					class="rounded-md bg-orange-600 px-6 py-3 text-white hover:bg-orange-700 active:bg-orange-800"
+				>
+          Print Result
+				</button>
+			</div>
 		</div>
 	</div>
 {:else}
 	<div transition:fade={{ duration: 250 }} class="m-16 flex h-[38rem] max-w-full flex-col gap-5">
 		<div class="mx-auto flex w-full max-w-3xl justify-between">
 			<div
-				class="flex h-12 w-12 items-center justify-center rounded-xs bg-gray-600 text-zinc-100 text-center text-2xl font-semibold"
+				class="flex h-12 w-12 items-center justify-center rounded-xs bg-gray-600 text-center text-2xl font-semibold text-zinc-100"
 			>
 				<p>{data.questions[type_of_question].dimension.toUpperCase()}</p>
 			</div>
@@ -132,7 +210,7 @@
 			</p>
 		</div>
 		<div class="mx-auto flex h-2/5 w-full max-w-3xl gap-3 max-md:flex-col-reverse">
-      <button
+			<button
 				onclick={handleNextQuestion}
 				class="grow basis-1/2 cursor-pointer rounded-xs bg-red-300 px-3 py-4 text-xl font-semibold active:scale-[0.98] active:transition-all"
 			>
@@ -145,7 +223,7 @@
 			>
 				{data.questions[type_of_question].questions[number_of_questions].answer.answer_yes}
 			</button>
-    </div>
+		</div>
 		<div class="mx-auto flex w-full max-w-3xl flex-col gap-2">
 			<div class="flex items-center justify-between text-sm font-normal">
 				<span id={labelId}> Question </span>
