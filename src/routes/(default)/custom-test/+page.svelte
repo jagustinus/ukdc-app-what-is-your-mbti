@@ -307,12 +307,12 @@
 
       <div class="flex w-full flex-col gap-2">
         <label for="name">Name</label>
-        <input bind:value={name} placeholder="Enter your name" class="border-2 py-2 px-4 border-zinc-700 bg-transparent rounded-sm text-white placeholder:text-gray-500 focus-visible:border-gray-500 focus:border-2  active:border-gray-500"/>
+        <input bind:value={name} placeholder="Enter your name" class="border-2 py-2 px-4 border-zinc-700 bg-transparent rounded-sm text-black placeholder:text-gray-500 focus-visible:border-gray-500 focus:border-2  active:border-gray-500"/>
       </div>
 
       <div class="flex w-full flex-col gap-2">
         <label for="phone_number">Phone Number</label>
-        <input bind:value={phoneNumber}  placeholder="Enter your phone number" class="border-2 py-2 px-4 border-zinc-700 bg-transparent rounded-sm text-white placeholder:text-gray-500 focus-visible:border-gray-500 focus:border-2  active:border-gray-500"/>
+        <input bind:value={phoneNumber}  placeholder="Enter your phone number" class="border-2 py-2 px-4 border-zinc-700 bg-transparent rounded-sm text-black placeholder:text-gray-500 focus-visible:border-gray-500 focus:border-2  active:border-gray-500"/>
         {#if isValidPhoneNumber }
           <p class="mt-1 text-sm text-green-400">Phone number is valid.</p>
         {:else if !isValidPhoneNumber && phoneNumber.length > 0}
@@ -414,7 +414,7 @@
 	<div transition:fade={{ duration: 250 }} class="m-16 flex h-[38rem] max-w-full flex-col gap-5">
 		<div class="mx-auto flex w-full max-w-3xl justify-between">
 			<div
-				class="flex h-12 w-12 items-center justify-center rounded-xs bg-gray-600 text-center text-2xl font-semibold"
+				class="flex h-12 w-12 items-center justify-center rounded-xs bg-gray-600 text-zinc-100 text-center text-2xl font-semibold"
 			>
 				<p>{questionsData[type_of_question].dimension.toUpperCase()}</p>
 			</div>
@@ -428,7 +428,7 @@
 		</div>
 
 		<div
-			class="mx-auto flex h-3/5 w-full max-w-3xl items-center justify-center rounded-sm bg-zinc-900 px-10 text-center text-wrap shadow-lg"
+			class="mx-auto flex h-3/5 w-full max-w-3xl items-center justify-center rounded-sm bg-zinc-400 px-10 text-center text-wrap shadow-lg"
 		>
 			<p class="text-3xl font-semibold max-md:text-xl">
 				{questionsData[type_of_question].questions[number_of_questions]}
@@ -458,7 +458,7 @@
 				{value}
 				{min}
 				{max}
-				class="shadow-mini-inset relative h-[15px] overflow-hidden rounded-full bg-zinc-900"
+				class="shadow-mini-inset relative h-[15px] overflow-hidden rounded-full bg-zinc-300"
 			>
 				<div
 					class="shadow-mini-inset h-full w-full flex-1 rounded-full transition-all duration-1000 ease-in-out {color}"
