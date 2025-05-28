@@ -350,48 +350,74 @@
 {#if usedPercentage >= 100}
 	<div
 		transition:fade={{ duration: 1000 }}
-		class="flex h-screen w-full flex-col items-center justify-center"
+		class="flex min-h-screen w-full flex-col items-center justify-center px-4 py-8 md:px-8"
 	>
 		<div class="flex w-full max-w-6xl flex-col">
+			<p class="mb-4 p-2 text-start text-2xl font-semibold md:mb-2 md:text-3xl">
+				Penjelasan Dimensi MBTI
+			</p>
 			<!-- card description -->
-			<div class="m-2 flex items-start justify-between gap-2">
+			<div class="m-2 flex flex-col gap-4 md:flex-row md:items-stretch md:justify-between md:gap-2">
 				{#each dataDescriptionMBTI as data, index (index)}
 					<div
-						class="flex h-full basis-1/4 flex-col gap-3 rounded-sm border border-gray-400 p-4 text-wrap shadow-sm"
+						class="flex flex-col gap-3 rounded-sm border border-gray-400 p-3 text-wrap shadow-sm md:basis-1/4 md:p-4"
 					>
 						<div>
-							<p class="text-xl font-semibold">{data[0].dimension}</p>
-							<p>
+							<p class="text-lg font-semibold md:text-xl">{data[0].dimension}</p>
+							<p class="text-sm md:text-base">
 								{data[0].description}
 							</p>
 						</div>
 						<div>
-							<p class="text-xl font-semibold">{data[1].dimension}</p>
-							<p>
+							<p class="text-lg font-semibold md:text-xl">{data[1].dimension}</p>
+							<p class="text-sm md:text-base">
 								{data[1].description}
 							</p>
 						</div>
 					</div>
 				{/each}
 			</div>
+
 			<!-- result -->
-			<p class="mb-2 p-2 text-3xl font-semibold">Hasil Tes MBTI</p>
-			<div class="mb-4 flex items-center justify-between gap-2">
+			<p class="mb-4 p-2 text-2xl font-semibold md:mb-2 md:text-3xl">Hasil Tes MBTI</p>
+
+			<!-- Mobile: MBTI Type at top -->
+			<div class="mb-6 block p-2 md:hidden">
+				<div
+					class="flex flex-col items-center justify-center rounded-lg border border-gray-300 bg-gray-50 p-6 shadow-sm"
+				>
+					<p class="text-5xl font-bold text-blue-600 md:text-4xl">{mbti_results}</p>
+					<button
+						onclick={printResult}
+						class="mt-4 w-full rounded-md bg-orange-600 px-4 py-3 text-lg font-medium text-white hover:bg-orange-700 active:bg-orange-800 md:w-auto md:px-4 md:py-2 md:text-base"
+					>
+						Print Result
+					</button>
+				</div>
+			</div>
+
+			<div class="mb-4 flex flex-col gap-6 md:flex-row md:items-center md:justify-between md:gap-2">
 				<!-- chart -->
-				<div class="flex h-full basis-3/4 flex-col gap-4 p-2">
+				<div class="flex h-full flex-col gap-3 p-2 md:basis-3/4 md:gap-4">
 					{#each allPercentages as item (item.title)}
-						<div class="flex items-center gap-2">
-							<p class="w-1/4 font-semibold">{item.title}</p>
-							<div class="h-6 flex-1 rounded-sm bg-gray-200">
-								<div class="h-full rounded-sm bg-blue-400" style="width: {item.percentage}%"></div>
+						<div class="flex items-center gap-2 md:gap-2">
+							<p class="w-20 text-sm font-semibold md:w-1/4 md:text-base">{item.title}</p>
+							<div class="h-5 flex-1 rounded-sm bg-gray-200 md:h-6">
+								<div
+									class="h-full rounded-sm bg-blue-400 transition-all duration-300"
+									style="width: {item.percentage}%"
+								></div>
 							</div>
-							<p class="w-12 text-right">{item.percentage}%</p>
+							<p class="w-12 text-right text-sm font-medium md:text-base">{item.percentage}%</p>
 						</div>
 					{/each}
 				</div>
-				<!-- mbti type -->
-				<div class="flex h-full basis-1/4 flex-col items-center justify-center rounded-sm p-4">
-					<p class="text-4xl font-bold">{mbti_results}</p>
+
+				<!-- mbti type - Desktop only -->
+				<div
+					class="hidden h-full flex-col items-center justify-center rounded-sm p-4 md:flex md:basis-1/4"
+				>
+					<p class="text-4xl font-bold text-blue-600">{mbti_results}</p>
 					<button
 						onclick={printResult}
 						class="mt-4 rounded-md bg-orange-600 px-4 py-2 text-white hover:bg-orange-700 active:bg-orange-800"
@@ -400,14 +426,15 @@
 					</button>
 				</div>
 			</div>
+
 			<!-- description mbti type and recommendation fields in informatic -->
 			<div class="p-2">
-				<p class="text-md">
+				<p class="text-sm leading-relaxed md:text-base">
 					Berdasarkan hasil tes MBTI, kamu termasuk dalam tipe kepribadian <span
-						class="font-semibold">{mbti_results}</span
+						class="font-semibold text-blue-600">{mbti_results}</span
 					>
 					. Tipe ini sangat cocok untuk bidang
-					<span class="font-semibold"
+					<span class="font-semibold text-orange-600"
 						>{data.recommendations[
 							mbti_results.toLowerCase() as keyof typeof data.recommendations
 						]}</span
