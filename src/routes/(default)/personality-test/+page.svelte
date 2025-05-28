@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Meter, useId } from 'bits-ui';
-  import { fade } from 'svelte/transition';
+	import { fade } from 'svelte/transition';
 	const { data } = $props();
 
 	let value = $state(0);
@@ -94,12 +94,47 @@
 		}
 	};
 
+  const percentageResulstExt = $derived.by(() => {
+    return Math.round(yes_count.e / 6 * 100)
+  });
+  
+  const percentageResulstIvt = $derived.by(() => {
+    return Math.round(yes_count.i / 6 * 100)
+  });
+
+  const percentageResulstSen = $derived.by(() => {
+    return Math.round(yes_count.s / 6 * 100)
+  });
+  
+  const percentageResulstInt = $derived.by(() => {
+    return Math.round(yes_count.n / 6 * 100)
+  });
+
+  const percentageResulstThi = $derived.by(() => {
+    return Math.round(yes_count.t / 6 * 100)
+  });
+
+  const percentageResulstFel = $derived.by(() => {
+    return Math.round(yes_count.f / 6 * 100)
+  });
+
+  const percentageResulstJud = $derived.by(() => {
+    return Math.round(yes_count.j / 6 * 100)
+  });
+
+  const percentageResulstPer = $derived.by(() => {
+    return Math.round(yes_count.p / 6 * 100)
+  });
+
+  $inspect(percentageResulstExt);
+
 	// Function to print the MBTI result
 	const printResult = () => {
 		const printWindow = window.open('', '_blank');
 		if (!printWindow) return;
 
-		const recommendations = data.recommendations[mbti_results.toLowerCase() as keyof typeof data.recommendations];
+		const recommendations =
+			data.recommendations[mbti_results.toLowerCase() as keyof typeof data.recommendations];
 
 		printWindow.document.write(`
 			<html>
@@ -160,7 +195,6 @@
 		printWindow.document.close();
 		printWindow.print();
 	};
-
 </script>
 
 <svelte:head>
@@ -172,43 +206,180 @@
 		transition:fade={{ duration: 1000 }}
 		class="flex h-screen w-full flex-col items-center justify-center"
 	>
-		<div class="flex flex-col items-center justify-center gap-5 text-center">
-			<p class="text-3xl font-semibold">Your MBTI result is:</p>
-			<p class="text-4xl font-bold">{mbti_results}</p>
-			{#if data.recommendations[mbti_results.toLowerCase() as keyof typeof data.recommendations]}{/if}
-			<p class="text-xl font-medium italic">
-				"You fields in {mbti_results} are: {data.recommendations[
-					mbti_results.toLowerCase() as keyof typeof data.recommendations
-				]}"
-			</p>
-
-			<!-- Print and Download buttons -->
-			<div class="mt-8 flex gap-4">
-				<button
-					onclick={printResult}
-					class="rounded-md bg-orange-600 px-6 py-3 text-white hover:bg-orange-700 active:bg-orange-800"
-				>
+		<div class="flex flex-col max-w-6xl w-full">
+      <!-- card description -->
+      <div class="flex justify-between items-start m-2 gap-2">
+        <div class="flex flex-col p-4 border border-gray-400 basis-1/4 gap-3 h-full rounded-sm shadow-sm text-wrap">
+          <div>
+            <p class="font-semibold text-xl">Extroversion</p>
+            <p>Mendapat energi dari berinteraksi dengan dunia luar dan orang lain. Lebih suka berbicara untuk berpikir.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-xl">Introversion</p>
+            <p>Mendapat energi dari dunia dalam dan refleksi diri. Lebih suka berpikir sebelum berbicara.</p>
+          </div>
+        </div> 
+        <div class="flex flex-col p-4 border border-gray-400 basis-1/4 gap-3 h-full rounded-sm shadow-sm text-wrap">
+          <div>
+            <p class="font-semibold text-xl">Sensing</p>
+            <p>Fokus pada informasi konkret, fakta, dan detail yang dapat dirasakan oleh panca indra. Praktis dan realistis.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-xl">Intuition</p>
+            <p>Fokus pada pola, kemungkinan, dan makna di balik informasi. Imajinatif dan konseptual.</p>
+          </div>
+        </div> 
+        <div class="flex flex-col p-4 border border-gray-400 basis-1/4 gap-3 h-full rounded-sm shadow-sm text-wrap">
+          <div>
+            <p class="font-semibold text-xl">Thinking</p>
+            <p>Membuat keputusan berdasarkan logika, analisis objektif, dan pertimbangan rasional.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-xl">Feeling</p>
+            <p>Membuat keputusan berdasarkan nilai-nilai pribadi, empati, dan dampak terhadap orang lain.</p>
+          </div>
+        </div> 
+        <div class="flex flex-col p-4 border border-gray-400 basis-1/4 gap-3 h-full rounded-sm shadow-sm text-wrap">
+          <div>
+            <p class="font-semibold text-xl">Judging</p>
+            <p>Lebih suka struktur, rencana yang jelas, dan keputusan yang tegas. Berorientasi pada hasil.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-xl">Perceiving</p>
+            <p>Lebih suka fleksibilitas, spontanitas, dan tetap terbuka terhadap opsi baru. Berorientasi pada proses.</p>
+          </div>
+        </div> 
+      </div>
+     <!-- result -->
+     <p class="p-2 mb-2 text-3xl font-semibold">Hasil Tes MBTI</p>
+     <div class="flex justify-between items-center gap-2 mb-4">
+     <!-- chart -->
+      <div class="flex flex-col basis-3/4 h-full p-2 gap-4">
+        <div class="flex items-center gap-2">
+          <p class="font-semibold w-1/4">Extroversion: </p>
+          <div class="flex-1 h-6 bg-gray-200 rounded-sm">
+            <div 
+              class="h-full rounded-sm bg-blue-400" 
+              style="width: {percentageResulstExt}%">
+            </div>
+          </div>
+          <p class="w-12 text-right">{percentageResulstExt}%</p>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <p class="font-semibold w-1/4">Introversion: </p>
+          <div class="flex-1 h-6 bg-gray-200 rounded-sm">
+            <div 
+              class="h-full rounded-sm bg-blue-400" 
+              style="width: {percentageResulstIvt}%">
+            </div>
+          </div>
+          <p class="w-12 text-right">{percentageResulstIvt}%</p>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <p class="font-semibold w-1/4">Sensing: </p>
+          <div class="flex-1 h-6 bg-gray-200 rounded-sm">
+            <div 
+              class="h-full rounded-sm bg-blue-400" 
+              style="width: {percentageResulstSen}%">
+            </div>
+          </div>
+          <p class="w-12 text-right">{percentageResulstSen}%</p>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <p class="font-semibold w-1/4">Intuition: </p>
+          <div class="flex-1 h-6 bg-gray-200 rounded-sm">
+            <div 
+              class="h-full rounded-sm bg-blue-400" 
+              style="width: {percentageResulstInt}%">
+            </div>
+          </div>
+          <p class="w-12 text-right">{percentageResulstInt}%</p>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <p class="font-semibold w-1/4">Thinking: </p>
+          <div class="flex-1 h-6 bg-gray-200 rounded-sm">
+            <div 
+              class="h-full rounded-sm bg-blue-400" 
+              style="width: {percentageResulstThi}%">
+            </div>
+          </div>
+          <p class="w-12 text-right">{percentageResulstThi}%</p>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <p class="font-semibold w-1/4">Feeling: </p>
+          <div class="flex-1 h-6 bg-gray-200 rounded-sm">
+            <div 
+              class="h-full rounded-sm bg-blue-400" 
+              style="width: {percentageResulstFel}%">
+            </div>
+          </div>
+          <p class="w-12 text-right">{percentageResulstFel}%</p>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <p class="font-semibold w-1/4">Judging: </p>
+          <div class="flex-1 h-6 bg-gray-200 rounded-sm">
+            <div 
+              class="h-full rounded-sm bg-blue-400" 
+              style="width: {percentageResulstJud}%">
+            </div>
+          </div>
+          <p class="w-12 text-right">{percentageResulstJud}%</p>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <p class="font-semibold w-1/4">Perceiving: </p>
+          <div class="flex-1 h-6 bg-gray-200 rounded-sm">
+            <div 
+              class="h-full rounded-sm bg-blue-400" 
+              style="width: {percentageResulstPer}%">
+            </div>
+          </div>
+          <p class="w-12 text-right">{percentageResulstPer}%</p>
+        </div>
+      </div>
+      <!-- mbti type -->
+      <div class="flex flex-col basis-1/4 h-full p-4 justify-center items-center rounded-sm">
+        <p class="text-4xl font-bold">INTJ</p>
+        <button
+          onclick={printResult}
+          class="rounded-md bg-orange-600 px-4 py-2 mt-4 text-white hover:bg-orange-700 active:bg-orange-800">
           Print Result
-				</button>
-			</div>
+        </button>
+      </div>
+     </div>
+     <!-- description mbti type and recommendation fields in informatic -->
+     <div class="p-2">
+      <p class="text-md">
+        Berdasarkan hasil tes MBTI, kamu termasuk dalam tipe kepribadian <span class="font-semibold">{mbti_results}</span> . Tipe ini sangat cocok untuk bidang <span class="font-semibold">{data.recommendations[mbti_results.toLowerCase() as keyof typeof data.recommendations]}</span> dalam dunia Informatika. Setiap bidang punya tantangan dan keunikan tersendiri, tapi dengan kepribadianmu, kamu punya potensi besar untuk berkembang di jalur ini.
+      </p>
+     </div>
 		</div>
 	</div>
 {:else}
 	<div transition:fade={{ duration: 250 }} class="m-16 flex h-[38rem] max-w-full flex-col gap-5">
 		<div class="mx-auto flex w-full max-w-3xl justify-between">
+    <!-- dimension of question -->
 			<div
-				class="flex h-12 w-12 items-center justify-center rounded-xs bg-gray-600 text-center text-2xl font-semibold text-zinc-100"
+				class="flex h-12 w-12 items-center justify-center rounded-xs border border-gray-300 text-center text-2xl font-semibold shadow-sm"
 			>
 				<p>{data.questions[type_of_question].dimension.toUpperCase()}</p>
 			</div>
 		</div>
 		<div
-			class="mx-auto flex h-3/5 w-full max-w-3xl items-center justify-center rounded-sm bg-zinc-400 px-10 text-center text-wrap shadow-lg"
+			class="mx-auto flex h-3/5 w-full max-w-3xl items-center justify-center rounded-sm border border-gray-300 px-10 text-center text-wrap shadow-sm"
 		>
+   <!-- question  -->
 			<p class="text-3xl font-semibold max-md:text-xl">
 				{data.questions[type_of_question].questions[number_of_questions].question}
 			</p>
 		</div>
+    <!-- handle answer -->
 		<div class="mx-auto flex h-2/5 w-full max-w-3xl gap-3 max-md:flex-col-reverse">
 			<button
 				onclick={handleNextQuestion}
@@ -224,6 +395,7 @@
 				{data.questions[type_of_question].questions[number_of_questions].answer.answer_yes}
 			</button>
 		</div>
+    <!-- percentage meter -->
 		<div class="mx-auto flex w-full max-w-3xl flex-col gap-2">
 			<div class="flex items-center justify-between text-sm font-normal">
 				<span id={labelId}> Question </span>

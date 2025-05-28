@@ -117,7 +117,7 @@ export const load = () => {
 
 	const listIntrovertQuestions: IListQuestions = {
 		dimension: 'i',
-		questions: randomQuestion(EIQuestionsWithAnswers, 6, 12)
+		questions: randomQuestion(EIQuestionsWithAnswers, 6, EIQuestionsWithAnswers.length - 1)
 	};
 
 	const SNQuestionsWithAnswers: IQuestionWithAnswer[] = [
@@ -214,7 +214,7 @@ export const load = () => {
 
 	const listIntuitiveQuestions: IListQuestions = {
 		dimension: 'n',
-		questions: randomQuestion(SNQuestionsWithAnswers, 6, 12)
+		questions: randomQuestion(SNQuestionsWithAnswers, 6, SNQuestionsWithAnswers.length - 1)
 	};
 
 	const TFQuestionsWithAnswers: IQuestionWithAnswer[] = [
@@ -311,7 +311,7 @@ export const load = () => {
 
 	const listFeelerQuestions: IListQuestions = {
 		dimension: 'f',
-		questions: randomQuestion(TFQuestionsWithAnswers, 6, 12)
+		questions: randomQuestion(TFQuestionsWithAnswers, 6, TFQuestionsWithAnswers.length - 1)
 	};
 
 	const JPQuestionsWithAnswers: IQuestionWithAnswer[] = [
@@ -408,7 +408,7 @@ export const load = () => {
 
 	const listPerceiverQuestions = {
 		dimension: 'p',
-		questions: randomQuestion(JPQuestionsWithAnswers, 6, 12)
+		questions: randomQuestion(JPQuestionsWithAnswers, 6, JPQuestionsWithAnswers.length - 1)
 	};
 
 	const listQuestions = [
