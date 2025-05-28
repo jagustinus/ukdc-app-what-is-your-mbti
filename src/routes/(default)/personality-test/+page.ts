@@ -1,117 +1,429 @@
+export type Answer = {
+	answer_yes: string;
+	answer_no: string;
+};
+
+export interface IQuestionWithAnswer {
+	question: string;
+	answer: Answer;
+}
+
+export interface IRecommendation {
+	recommendations: string[];
+}
+
+export interface IListQuestions {
+	dimension: string;
+	questions: IQuestionWithAnswer[];
+}
+
+export interface IQuestionsAndRecommendations {
+	questions: IListQuestions[];
+	recommendations: IRecommendation;
+}
+
 export const load = () => {
-	const ei_questions = [
-		'Apakah Anda umumnya lebih suka berada di sekitar orang lain daripada sendirian?',
-		'Apakah Anda merasa berenergi setelah menghadiri acara sosial?',
-		'Apakah Anda cenderung berbicara sebelum memikirkan sesuatu dengan matang?',
-		'Apakah Anda senang bertemu orang baru secara rutin?',
-		'Apakah Anda lebih suka bekerja dalam kelompok daripada bekerja sendiri?',
-		'Apakah Anda merasa nyaman berbicara di hadapan banyak orang atau kelompok besar?',
-		'Apakah Anda suka menjadi pusat perhatian?',
-		'Apakah Anda membutuhkan waktu sendiri untuk mengisi ulang energi setelah bersosialisasi?',
-		'Apakah Anda lebih suka memikirkan ide terlebih dahulu sebelum membagikannya?',
-		'Apakah Anda merasa lelah jika berada dalam situasi sosial dalam waktu lama?',
-		'Apakah Anda lebih suka percakapan mendalam satu lawan satu daripada diskusi kelompok besar?',
-		'Apakah Anda sering merenung secara internal sebelum bertindak?'
+	const EIQuestionsWithAnswers: IQuestionWithAnswer[] = [
+		{
+			question: 'Kamu lebih suka rame-rame sama orang lain atau mending sendiri?',
+			answer: {
+				answer_yes: 'Nongkrong bareng orang itu seru banget',
+				answer_no: 'Sendirian lebih nyaman dan tenang'
+			}
+		},
+		{
+			question: 'Setelah nongkrong, kamu malah makin semangat atau capek?',
+			answer: {
+				answer_yes: 'Nongkrong bikin aku makin hidup',
+				answer_no: 'Habis sosialisasi malah butuh istirahat'
+			}
+		},
+		{
+			question: 'Kamu sering ngomong dulu baru mikir belakangan?',
+			answer: {
+				answer_yes: 'Iya, suka blak-blakan dulu',
+				answer_no: 'Mikir dulu baru ngomong'
+			}
+		},
+		{
+			question: 'Ketemu orang baru itu seru atau melelahkan buat kamu?',
+			answer: {
+				answer_yes: 'Ketemu orang baru itu asik',
+				answer_no: 'Capek kalau harus basa-basi'
+			}
+		},
+		{
+			question: 'Kerja bareng orang lain lebih asik daripada kerja sendirian gak?',
+			answer: {
+				answer_yes: 'Teamwork itu seru banget',
+				answer_no: 'Mending kerja sendiri, lebih fokus'
+			}
+		},
+		{
+			question: 'Kamu pede gak sih ngomong di depan banyak orang?',
+			answer: {
+				answer_yes: 'Pede banget, suka tampil',
+				answer_no: 'Deg-degan parah, gak nyaman'
+			}
+		},
+		{
+			question: 'Kamu suka jadi pusat perhatian atau mending lowkey aja?',
+			answer: {
+				answer_yes: 'Suka disorot dan diperhatikan',
+				answer_no: 'Mending jadi background aja'
+			}
+		},
+		{
+			question: 'Habis bersosialisasi, kamu butuh waktu sendiri buat recharge gak?',
+			answer: {
+				answer_yes: 'Gak juga, makin semangat malah',
+				answer_no: 'Iya, butuh waktu buat sendiri'
+			}
+		},
+		{
+			question: 'Kamu biasanya mikir dulu baru ngomong, atau langsung aja?',
+			answer: {
+				answer_yes: 'Langsung aja, spontan',
+				answer_no: 'Mikir dulu, baru buka suara'
+			}
+		},
+		{
+			question: 'Nongkrong lama-lama bikin kamu capek gak sih?',
+			answer: {
+				answer_yes: 'Enggak, makin betah',
+				answer_no: 'Iya, cepat lelah kalau terlalu lama'
+			}
+		},
+		{
+			question: 'Kamu lebih suka ngobrol mendalam berdua daripada rame-rame?',
+			answer: {
+				answer_yes: 'Mending ngobrol berdua yang dalem',
+				answer_no: 'Ngobrol rame-rame itu lebih seru'
+			}
+		},
+		{
+			question: 'Kamu sering mikir panjang dulu sebelum ngelakuin sesuatu gak?',
+			answer: {
+				answer_yes: 'Iya, harus mikir dulu',
+				answer_no: 'Enggak, jalanin aja dulu'
+			}
+		}
 	];
 
-	const list_e_questions = {
+	const listExtrovertQuestions: IListQuestions = {
 		dimension: 'e',
-		questions: randomQuestion(ei_questions, 0, 6)
+		questions: randomQuestion(EIQuestionsWithAnswers, 0, 6)
 	};
 
-	const list_i_questions = {
+	const listIntrovertQuestions: IListQuestions = {
 		dimension: 'i',
-		questions: randomQuestion(ei_questions, 6, 12)
+		questions: randomQuestion(EIQuestionsWithAnswers, 6, EIQuestionsWithAnswers.length - 1)
 	};
 
-	const sn_questions = [
-		'Apakah Anda lebih tertarik pada fakta dan detail konkret daripada teori abstrak?',
-		'Apakah Anda lebih mempercayai pengalaman dan penerapan praktis daripada gagasan teoretis?',
-		'Apakah Anda lebih fokus pada kenyataan saat ini daripada kemungkinan di masa depan?',
-		'Apakah Anda lebih suka petunjuk langkah demi langkah daripada mencari tahu sendiri?',
-		'Apakah Anda lebih bersifat praktis daripada imajinatif?',
-		'Apakah Anda lebih suka metode yang sudah terbukti daripada pendekatan eksperimental?',
-		'Apakah Anda menghargai tradisi dan sejarah yang sudah terbukti?',
-		'Apakah Anda senang memikirkan kemungkinan dan gambaran besar?',
-		'Apakah Anda sering menemukan pola dan hubungan yang tidak disadari orang lain?',
-		'Apakah Anda sering memikirkan masa depan dan apa yang mungkin terjadi?',
-		'Apakah Anda senang berdiskusi tentang konsep teoretis dan abstrak?',
-		'Apakah Anda lebih suka inovasi daripada tradisi?'
+	const SNQuestionsWithAnswers: IQuestionWithAnswer[] = [
+		{
+			question: 'Kamu lebih suka fakta nyata daripada teori-teori gak jelas?',
+			answer: {
+				answer_yes: 'Fakta dan bukti lebih meyakinkan',
+				answer_no: 'Suka mikir ide dan kemungkinan'
+			}
+		},
+		{
+			question: 'Pengalaman nyata lebih kamu percaya daripada ide-ide abstrak?',
+			answer: {
+				answer_yes: 'Bukti nyata itu no debat',
+				answer_no: 'Imajinasi dan ide itu penting banget'
+			}
+		},
+		{
+			question: 'Kamu lebih fokus ke sekarang atau mikir masa depan mulu?',
+			answer: {
+				answer_yes: 'Fokus sama yang sekarang aja',
+				answer_no: 'Sering mikir jauh ke depan'
+			}
+		},
+		{
+			question: 'Kamu suka dikasih petunjuk jelas atau mending coba-coba sendiri?',
+			answer: {
+				answer_yes: 'Mending dikasih langkah-langkah',
+				answer_no: 'Suka eksplor sendiri, lebih menantang'
+			}
+		},
+		{
+			question: 'Kamu orangnya realistis atau imajinatif?',
+			answer: {
+				answer_yes: 'Realistis, yang penting bisa dilakuin',
+				answer_no: 'Imajinatif, suka ngide'
+			}
+		},
+		{
+			question: 'Kamu lebih percaya cara yang udah terbukti daripada nyobain hal baru?',
+			answer: {
+				answer_yes: 'Jalan aman aja, yang udah pasti',
+				answer_no: 'Coba hal baru seru, gak takut gagal'
+			}
+		},
+		{
+			question: 'Kamu mikir tradisi itu penting dan layak dijaga gak?',
+			answer: {
+				answer_yes: 'Tradisi itu harus dijaga',
+				answer_no: 'Tradisi boleh diubah, biar gak bosan'
+			}
+		},
+		{
+			question: 'Kamu suka mikir hal-hal “what if” dan kemungkinan di masa depan?',
+			answer: {
+				answer_yes: 'Jarang mikir terlalu jauh',
+				answer_no: 'Sering banget mikir "gimana kalau"'
+			}
+		},
+		{
+			question: 'Kamu sering nemu pola tersembunyi yang orang lain gak sadar?',
+			answer: {
+				answer_yes: 'Jarang, lebih fokus ke yang kelihatan',
+				answer_no: 'Iya, suka ngeliat pola-pola kecil'
+			}
+		},
+		{
+			question: 'Kamu suka ngebayangin masa depan dan segala kemungkinannya?',
+			answer: {
+				answer_yes: 'Lebih mikir sekarang aja',
+				answer_no: 'Masa depan tuh bikin penasaran'
+			}
+		},
+		{
+			question: 'Diskusi soal konsep rumit dan abstrak tuh seru atau pusing?',
+			answer: {
+				answer_yes: 'Pusing, mending bahas hal nyata',
+				answer_no: 'Seru, suka mikir yang dalam-dalam'
+			}
+		},
+		{
+			question: 'Inovasi bikin kamu semangat atau malah ngeri?',
+			answer: {
+				answer_yes: 'Ngeri, takut gagal',
+				answer_no: 'Semangat, pengen jadi pelopor'
+			}
+		}
 	];
 
-	const list_s_questions = {
+	const listSensorQuestions: IListQuestions = {
 		dimension: 's',
-		questions: randomQuestion(sn_questions, 0, 6)
+		questions: randomQuestion(SNQuestionsWithAnswers, 0, 6)
 	};
 
-	const list_n_questions = {
+	const listIntuitiveQuestions: IListQuestions = {
 		dimension: 'n',
-		questions: randomQuestion(sn_questions, 6, 12)
+		questions: randomQuestion(SNQuestionsWithAnswers, 6, SNQuestionsWithAnswers.length - 1)
 	};
 
-	const tf_questions = [
-		'Apakah Anda lebih menghargai kebenaran objektif daripada menjaga keharmonisan sosial?',
-		'Dalam mengambil keputusan, apakah Anda lebih mengutamakan logika daripada nilai pribadi?',
-		'Apakah Anda nyaman menerima kritik membangun dan perdebatan?',
-		'Apakah Anda lebih suka menganalisis sesuatu secara objektif daripada mempertimbangkan perasaan?',
-		'Apakah Anda mudah memberikan umpan balik jujur meskipun bisa menyakiti perasaan orang lain?',
-		'Apakah Anda membuat keputusan terutama berdasarkan fakta dan bukti?',
-		'Apakah Anda lebih menghargai efisiensi daripada kerja sama?',
-		'Apakah Anda sering mempertimbangkan bagaimana keputusan akan memengaruhi perasaan orang lain?',
-		'Apakah Anda menghargai ungkapan apresiasi secara pribadi?',
-		'Apakah menjaga keharmonisan dalam kelompok lebih penting daripada menjadi benar?',
-		'Apakah Anda membuat keputusan berdasarkan apa yang terasa benar?',
-		'Apakah Anda sangat berempati terhadap kesulitan orang lain?'
+	const TFQuestionsWithAnswers: IQuestionWithAnswer[] = [
+		{
+			question: 'Buat kamu, kebenaran lebih penting daripada menjaga perasaan orang?',
+			answer: {
+				answer_yes: 'Jujur itu wajib, meskipun nyakitin',
+				answer_no: 'Yang penting gak nyakitin orang'
+			}
+		},
+		{
+			question: 'Pas ngambil keputusan, kamu lebih ngandelin logika atau perasaan?',
+			answer: {
+				answer_yes: 'Pake logika, biar objektif',
+				answer_no: 'Pake perasaan, biar adil buat semua'
+			}
+		},
+		{
+			question: 'Kamu oke gak kalau dikritik asal membangun?',
+			answer: {
+				answer_yes: 'Oke, asal jelas tujuannya',
+				answer_no: 'Sedikit baper, tapi ngerti maksudnya'
+			}
+		},
+		{
+			question: 'Kamu lebih suka mikir secara objektif atau mikirin perasaan orang juga?',
+			answer: {
+				answer_yes: 'Objektif dulu baru mikirin yang lain',
+				answer_no: 'Perasaan orang itu penting dipikirin juga'
+			}
+		},
+		{
+			question: 'Kamu berani ngasih feedback jujur walau agak nyakitin?',
+			answer: {
+				answer_yes: 'Iya, biar cepet berkembang',
+				answer_no: 'Gak tega, takut nyakitin'
+			}
+		},
+		{
+			question: 'Kamu ambil keputusan berdasarkan fakta atau perasaan?',
+			answer: {
+				answer_yes: 'Fakta no debat',
+				answer_no: 'Perasaan kadang lebih bener'
+			}
+		},
+		{
+			question: 'Efisiensi lebih penting daripada kerja sama buat kamu?',
+			answer: {
+				answer_yes: 'Yang penting cepet dan beres',
+				answer_no: 'Tim kompak lebih penting'
+			}
+		},
+		{
+			question: 'Kamu sering mikirin gimana keputusanmu bakal ngaruh ke orang lain gak?',
+			answer: {
+				answer_yes: 'Kadang sih',
+				answer_no: 'Sering banget mikirin efek ke orang'
+			}
+		},
+		{
+			question: 'Kamu suka banget kalau ada yang apresiasi kamu secara personal?',
+			answer: {
+				answer_yes: 'Biasa aja',
+				answer_no: 'Suka banget kalau diapresiasi'
+			}
+		},
+		{
+			question: 'Buat kamu, damai itu lebih penting daripada debat siapa yang bener?',
+			answer: {
+				answer_yes: 'Yang bener tetap harus disuarakan',
+				answer_no: 'Damai lebih penting daripada ribut'
+			}
+		},
+		{
+			question: 'Kamu sering ngikutin kata hati gak pas milih sesuatu?',
+			answer: {
+				answer_yes: 'Jarang, harus logis',
+				answer_no: 'Iya, hati gak pernah bohong'
+			}
+		},
+		{
+			question: 'Kamu gampang tergerak kalau lihat orang lagi susah?',
+			answer: {
+				answer_yes: 'Kadang aja',
+				answer_no: 'Banget, langsung pengen bantu'
+			}
+		}
 	];
 
-	const list_t_questions = {
+	const listThinkerQuestions: IListQuestions = {
 		dimension: 't',
-		questions: randomQuestion(tf_questions, 0, 6)
+		questions: randomQuestion(TFQuestionsWithAnswers, 0, 6)
 	};
 
-	const list_f_questions = {
+	const listFeelerQuestions: IListQuestions = {
 		dimension: 'f',
-		questions: randomQuestion(tf_questions, 6, 12)
+		questions: randomQuestion(TFQuestionsWithAnswers, 6, TFQuestionsWithAnswers.length - 1)
 	};
 
-	const jp_questions = [
-		'Apakah Anda lebih suka memiliki rencana terperinci daripada bersikap spontan?',
-		'Apakah Anda merasa terganggu jika ada urusan yang belum selesai atau keputusan yang belum diambil?',
-		'Apakah Anda lebih suka menyelesaikan satu proyek sepenuhnya sebelum memulai yang lain?',
-		'Apakah Anda senang memiliki rutinitas harian yang terstruktur?',
-		'Apakah Anda sering membuat daftar tugas dan jadwal secara teratur?',
-		'Apakah Anda datang lebih awal atau tepat waktu untuk janji temu?',
-		'Apakah Anda merasa stres jika ada perubahan mendadak pada rencana?',
-		'Apakah Anda suka menjaga pilihan tetap terbuka selama mungkin?',
-		'Apakah Anda senang beradaptasi dengan situasi dan perubahan baru?',
-		'Apakah tenggat waktu bagi Anda lebih seperti saran daripada aturan?',
-		'Apakah Anda merasa rutinitas itu membatasi atau membosankan?',
-		'Apakah Anda lebih suka fleksibilitas daripada struktur dalam pekerjaan dan kehidupan Anda?'
+	const JPQuestionsWithAnswers: IQuestionWithAnswer[] = [
+		{
+			question: 'Kamu lebih suka punya rencana jelas atau go with the flow aja?',
+			answer: {
+				answer_yes: 'Harus terencana dong',
+				answer_no: 'Santai aja, ngikut arus'
+			}
+		},
+		{
+			question: 'Kamu ngerasa gak nyaman kalau ada hal yang belum kelar?',
+			answer: {
+				answer_yes: 'Gak tenang kalau belum kelar',
+				answer_no: 'Biasa aja, bisa nanti'
+			}
+		},
+		{
+			question: 'Kamu ngerjain satu hal sampe tuntas dulu baru pindah ke yang lain?',
+			answer: {
+				answer_yes: 'Harus selesai satu dulu',
+				answer_no: 'Bisa lompat-lompat, gak masalah'
+			}
+		},
+		{
+			question: 'Kamu suka punya rutinitas harian atau anti banget sama itu?',
+			answer: {
+				answer_yes: 'Suka, biar teratur',
+				answer_no: 'Bosan kalau terlalu gitu-gitu aja'
+			}
+		},
+		{
+			question: 'Kamu suka bikin to-do list dan jadwal harian gak?',
+			answer: {
+				answer_yes: 'Sering banget',
+				answer_no: 'Jarang banget'
+			}
+		},
+		{
+			question: 'Kamu tipe yang dateng lebih awal atau suka molor?',
+			answer: {
+				answer_yes: 'Biasanya udah siap lebih awal',
+				answer_no: 'Sering ngaret dikit sih'
+			}
+		},
+		{
+			question: 'Rencana berubah tiba-tiba tuh bikin kamu stress gak?',
+			answer: {
+				answer_yes: 'Iya, gak suka dadakan',
+				answer_no: 'Enggak, fleksibel aja'
+			}
+		},
+		{
+			question: 'Kamu lebih suka semua opsi tetap terbuka atau cepet ambil keputusan?',
+			answer: {
+				answer_yes: 'Lebih suka ambil keputusan cepet',
+				answer_no: 'Pilihan tetap terbuka lebih nyaman'
+			}
+		},
+		{
+			question: 'Kamu enjoy gak sih sama perubahan dan hal baru?',
+			answer: {
+				answer_yes: 'Agak susah adaptasi',
+				answer_no: 'Suka tantangan baru'
+			}
+		},
+		{
+			question: 'Deadline menurut kamu itu patokan keras atau bisa fleksibel?',
+			answer: {
+				answer_yes: 'Keras, harus tepat waktu',
+				answer_no: 'Fleksibel, bisa diatur'
+			}
+		},
+		{
+			question: 'Rutinitas itu ngebantu atau malah bikin kamu bosen?',
+			answer: {
+				answer_yes: 'Ngebantu banget',
+				answer_no: 'Bosen, pengen hal baru'
+			}
+		},
+		{
+			question: 'Kamu lebih nyaman kerja fleksibel atau terstruktur?',
+			answer: {
+				answer_yes: 'Terstruktur dong',
+				answer_no: 'Fleksibel lebih asik'
+			}
+		}
 	];
 
-	const list_j_questions = {
+	const listJudgerQuestions = {
 		dimension: 'j',
-		questions: randomQuestion(jp_questions, 0, 6)
+		questions: randomQuestion(JPQuestionsWithAnswers, 0, 6)
 	};
 
-	const list_p_questions = {
+	const listPerceiverQuestions = {
 		dimension: 'p',
-		questions: randomQuestion(jp_questions, 6, 12)
+		questions: randomQuestion(JPQuestionsWithAnswers, 6, JPQuestionsWithAnswers.length - 1)
 	};
 
-	const list_questions = [
-		list_e_questions,
-		list_i_questions,
-		list_s_questions,
-		list_n_questions,
-		list_t_questions,
-		list_f_questions,
-		list_j_questions,
-		list_p_questions
+	const listQuestions = [
+		listExtrovertQuestions,
+		listIntrovertQuestions,
+		listSensorQuestions,
+		listIntuitiveQuestions,
+		listThinkerQuestions,
+		listFeelerQuestions,
+		listJudgerQuestions,
+		listPerceiverQuestions
 	];
 
 	return {
-		questions: list_questions,
+		questions: listQuestions,
 		recommendations: {
 			intj: ['artificial intelligence', 'data science', 'algorithms', 'systems architecture'],
 			intp: [
@@ -132,7 +444,6 @@ export const load = () => {
 				'systems design',
 				'emerging technologies'
 			],
-
 			infj: ['digital ethics', 'information science', 'ux research', 'educational technology'],
 			infp: ['ui/ux design', 'human-computer interaction', 'game development', 'digital media'],
 			enfj: [
@@ -147,7 +458,6 @@ export const load = () => {
 				'user experience',
 				'interactive media'
 			],
-
 			istj: ['cybersecurity', 'database administration', 'software qa', 'systems administration'],
 			isfj: ['data management', 'it support', 'technical documentation', 'digital librarianship'],
 			estj: [
@@ -162,7 +472,6 @@ export const load = () => {
 				'technical account management',
 				'digital communication'
 			],
-
 			istp: ['network engineering', 'hardware development', 'penetration testing', 'robotics'],
 			isfp: ['digital design', 'web development', 'multimedia', 'mobile app development'],
 			estp: [
@@ -181,7 +490,11 @@ export const load = () => {
 	};
 };
 
-const randomQuestion = (questions: string[], startSlice = 0, endSlice = 0): string[] => {
+const randomQuestion = (
+	questions: IQuestionWithAnswer[],
+	startSlice = 0,
+	endSlice = 0
+): IQuestionWithAnswer[] => {
 	const questionsAfterSlice = questions.slice(startSlice, endSlice);
 	// Fisher-Yates shuffle algorithm to randomize array
 	const shuffled = [...questionsAfterSlice];
@@ -189,6 +502,5 @@ const randomQuestion = (questions: string[], startSlice = 0, endSlice = 0): stri
 		const j = Math.floor(Math.random() * (i + 1));
 		[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
 	}
-
 	return shuffled;
 };
