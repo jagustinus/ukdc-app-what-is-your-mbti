@@ -445,35 +445,46 @@
 		</div>
 	</div>
 {:else}
-	<div transition:fade={{ duration: 250 }} class="m-16 flex h-[38rem] max-w-full flex-col gap-5">
+	<div
+		transition:fade={{ duration: 250 }}
+		class="flex min-h-screen w-full flex-col gap-4 bg-zinc-100 px-4 py-6 md:gap-5 md:px-16 md:py-16"
+	>
+		<div
+			class="mx-auto mb-3 flex h-auto w-full max-w-3xl items-center rounded-sm border border-amber-300 bg-amber-100 p-4 shadow-sm md:h-24"
+		>
+			<p class="text-sm text-amber-900 md:text-base">
+				Tidak ada jawaban benar atau salah — pilih yang paling menggambarkan kamu!
+			</p>
+		</div>
 		<div class="mx-auto flex w-full max-w-3xl justify-between">
+			<!-- alert -->
 			<!-- dimension of question -->
 			<div
-				class="flex h-12 w-12 items-center justify-center rounded-xs border border-gray-300 text-center text-2xl font-semibold shadow-sm"
+				class="flex h-10 w-10 items-center justify-center rounded-xs border border-gray-300 bg-white text-center text-lg font-semibold shadow-sm md:h-12 md:w-12 md:text-2xl"
 			>
 				<p>{data.questions[type_of_question].dimension.toUpperCase()}</p>
 			</div>
 		</div>
 		<div
-			class="mx-auto flex h-3/5 w-full max-w-3xl items-center justify-center rounded-sm border border-gray-300 px-10 text-center text-wrap shadow-sm"
+			class="mx-auto flex min-h-[250px] w-full max-w-3xl items-center justify-center rounded-sm border border-gray-300 bg-white px-4 py-6 text-center shadow-sm md:min-h-[300px] md:px-10 md:py-8"
 		>
 			<!-- question  -->
-			<p class="text-3xl font-semibold max-md:text-xl">
+			<p class="text-base leading-relaxed font-semibold md:text-3xl">
 				{data.questions[type_of_question].questions[number_of_questions].question}
 			</p>
 		</div>
 		<!-- handle answer -->
-		<div class="mx-auto flex h-2/5 w-full max-w-3xl gap-3 max-md:flex-col-reverse">
+		<div class="mx-auto flex w-full max-w-3xl flex-col gap-3 md:flex-row">
 			<button
 				onclick={handleNextQuestion}
-				class="grow basis-1/2 cursor-pointer rounded-xs bg-red-300 px-3 py-4 text-xl font-semibold active:scale-[0.98] active:transition-all"
+				class="order-2 grow cursor-pointer rounded-xs bg-red-300 px-3 py-4 text-base font-semibold transition-all active:scale-[0.98] md:order-1 md:basis-1/2 md:text-xl"
 			>
 				{data.questions[type_of_question].questions[number_of_questions].answer.answer_no}
 			</button>
 			<button
 				id="yes-button"
 				onclick={handleNextQuestion}
-				class="grow basis-1/2 cursor-pointer rounded-xs bg-blue-300 px-3 py-4 text-xl font-semibold active:scale-[0.98] active:transition-all"
+				class="order-1 grow cursor-pointer rounded-xs bg-blue-300 px-3 py-4 text-base font-semibold transition-all active:scale-[0.98] md:order-2 md:basis-1/2 md:text-xl"
 			>
 				{data.questions[type_of_question].questions[number_of_questions].answer.answer_yes}
 			</button>
