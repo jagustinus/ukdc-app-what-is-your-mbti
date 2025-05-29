@@ -253,22 +253,22 @@
 		// Sample questions with quotes around text to handle any commas in content
 		const sampleCsv =
 			'dimension,question\n' +
-      'e, "Apakah Anda merasa berenergi setelah menghabiskan waktu dengan sekelompok orang?"\n' +
-      'e, "Apakah Anda lebih suka berbicara daripada mendengarkan dalam percakapan?"\n' +
-      'i, "Apakah Anda membutuhkan waktu sendiri untuk memulihkan diri setelah kegiatan sosial? "\n' +
-      'i, "Apakah Anda lebih suka mengerjakan proyek sendirian daripada berkelompok?"\n' +
-      's, "Apakah Anda lebih fokus pada fakta dan detail daripada konsep dan ide?"\n' +
-      's, "Apakah Anda lebih suka solusi praktis daripada solusi teoritis?"\n' +
-      'n, "Apakah Anda sering memikirkan kemungkinan di masa depan? "\n' +
-      'n, "Apakah Anda senang memikirkan konsep-konsep abstrak?"\n' +
-      't, "Apakah Anda membuat keputusan berdasarkan logika daripada perasaan?"\n' +
-      't, "Apakah Anda lebih menghargai kebenaran daripada kebijaksanaan?"\n' +
-      'f, "Apakah Anda mempertimbangkan dampak keputusan Anda terhadap orang lain? "\n' +
-      'f, "Apakah Anda menghargai keharmonisan dan kerja sama dalam tim?"\n' +
-      'j, "Apakah Anda lebih suka merencanakan kegiatan jauh-jauh hari?"\n' +
-      'j, "Apakah memiliki jadwal itu penting untuk Anda?"\n' +
-      'p, "Apakah Anda lebih suka membiarkan pilihan-pilihan Anda tetap terbuka?"\n' +
-      'p, "Apakah Anda menyukai spontanitas dan fleksibilitas?"';
+			'e, "Apakah Anda merasa berenergi setelah menghabiskan waktu dengan sekelompok orang?"\n' +
+			'e, "Apakah Anda lebih suka berbicara daripada mendengarkan dalam percakapan?"\n' +
+			'i, "Apakah Anda membutuhkan waktu sendiri untuk memulihkan diri setelah kegiatan sosial? "\n' +
+			'i, "Apakah Anda lebih suka mengerjakan proyek sendirian daripada berkelompok?"\n' +
+			's, "Apakah Anda lebih fokus pada fakta dan detail daripada konsep dan ide?"\n' +
+			's, "Apakah Anda lebih suka solusi praktis daripada solusi teoritis?"\n' +
+			'n, "Apakah Anda sering memikirkan kemungkinan di masa depan? "\n' +
+			'n, "Apakah Anda senang memikirkan konsep-konsep abstrak?"\n' +
+			't, "Apakah Anda membuat keputusan berdasarkan logika daripada perasaan?"\n' +
+			't, "Apakah Anda lebih menghargai kebenaran daripada kebijaksanaan?"\n' +
+			'f, "Apakah Anda mempertimbangkan dampak keputusan Anda terhadap orang lain? "\n' +
+			'f, "Apakah Anda menghargai keharmonisan dan kerja sama dalam tim?"\n' +
+			'j, "Apakah Anda lebih suka merencanakan kegiatan jauh-jauh hari?"\n' +
+			'j, "Apakah memiliki jadwal itu penting untuk Anda?"\n' +
+			'p, "Apakah Anda lebih suka membiarkan pilihan-pilihan Anda tetap terbuka?"\n' +
+			'p, "Apakah Anda menyukai spontanitas dan fleksibilitas?"';
 
 		const blob = new Blob([sampleCsv], { type: 'text/csv' });
 		const url = URL.createObjectURL(blob);
@@ -281,51 +281,60 @@
 		URL.revokeObjectURL(url);
 	}
 
-  // data user input
-  let name: string = $state('');
-  let phoneNumber: string = $state('');
+	// data user input
+	let name: string = $state('');
+	let phoneNumber: string = $state('');
 
-  let isValidPhoneNumber: boolean = $derived.by(() => {
-    const phoneRegex = new RegExp("^\\+?[1-9]\\d{6,14}$");
-    return phoneRegex.test(phoneNumber);
-  })
-
+	let isValidPhoneNumber: boolean = $derived.by(() => {
+		const phoneRegex = new RegExp('^\\+?[1-9]\\d{6,14}$');
+		return phoneRegex.test(phoneNumber);
+	});
 </script>
 
 <svelte:head>
-  <title>Custom Personality Test</title>
+	<title>Custom Personality Test</title>
 </svelte:head>
 
 {#if !hasUploadedCsv}
-	<div class="flex h-screen w-full items-center justify-center">
-		<div class="flex max-w-3xl flex-col items-center justify-center gap-8 p-8">
-			<h1 class="text-4xl font-bold">Custom MBTI Test</h1>
-			<p class="text-center text-xl">
+	<div class="flex min-h-screen w-full items-center justify-center bg-zinc-100 px-4 py-8">
+		<div
+			class="flex w-full max-w-3xl flex-col items-center justify-center gap-6 rounded-lg bg-white p-6 shadow-lg md:gap-8 md:p-8"
+		>
+			<h1 class="text-2xl font-bold md:text-4xl">Custom MBTI Test</h1>
+			<p class="text-center text-base md:text-xl">
 				Upload your own CSV file with MBTI questions to start the test. The CSV must include
 				"dimension" and "question" columns.
 			</p>
 
-      <div class="flex w-full flex-col gap-2">
-        <label for="name">Name</label>
-        <input bind:value={name} placeholder="Enter your name" class="border-2 py-2 px-4 border-zinc-700 bg-transparent rounded-sm text-black placeholder:text-gray-500 focus-visible:border-gray-500 focus:border-2  active:border-gray-500"/>
-      </div>
+			<div class="flex w-full flex-col gap-2">
+				<label for="name" class="text-sm font-medium md:text-base">Name</label>
+				<input
+					bind:value={name}
+					placeholder="Enter your name"
+					class="rounded-sm border-2 border-zinc-700 bg-transparent px-4 py-2 text-black placeholder:text-gray-500 focus:border-2 focus:border-gray-500 focus-visible:border-gray-500 active:border-gray-500"
+				/>
+			</div>
 
-      <div class="flex w-full flex-col gap-2">
-        <label for="phone_number">Phone Number</label>
-        <input bind:value={phoneNumber}  placeholder="Enter your phone number" class="border-2 py-2 px-4 border-zinc-700 bg-transparent rounded-sm text-black placeholder:text-gray-500 focus-visible:border-gray-500 focus:border-2  active:border-gray-500"/>
-        {#if isValidPhoneNumber }
-          <p class="mt-1 text-sm text-green-400">Phone number is valid.</p>
-        {:else if !isValidPhoneNumber && phoneNumber.length > 0}
-          <p class="mt-1 text-sm text-red-400">Phone number is invalid.</p>
-        {/if}
-      </div>
+			<div class="flex w-full flex-col gap-2">
+				<label for="phone_number" class="text-sm font-medium md:text-base">Phone Number</label>
+				<input
+					bind:value={phoneNumber}
+					placeholder="Enter your phone number"
+					class="rounded-sm border-2 border-zinc-700 bg-transparent px-4 py-2 text-black placeholder:text-gray-500 focus:border-2 focus:border-gray-500 focus-visible:border-gray-500 active:border-gray-500"
+				/>
+				{#if isValidPhoneNumber}
+					<p class="mt-1 text-sm text-green-600">Phone number is valid.</p>
+				{:else if !isValidPhoneNumber && phoneNumber.length > 0}
+					<p class="mt-1 text-sm text-red-600">Phone number is invalid.</p>
+				{/if}
+			</div>
 
 			<div class="flex w-full flex-col gap-2">
 				<div class="flex items-center justify-between">
-					<label for="csv-upload" class="text-lg font-medium">Upload CSV File</label>
+					<label for="csv-upload" class="text-sm font-medium md:text-lg">Upload CSV File</label>
 					<button
 						onclick={downloadSampleCsv}
-						class="text-sm text-blue-400 underline hover:text-blue-300"
+						class="text-sm text-blue-600 underline hover:text-blue-800"
 					>
 						Download Sample CSV
 					</button>
@@ -335,11 +344,11 @@
 					type="file"
 					accept=".csv"
 					onchange={handleCsvUpload}
-					class="w-full rounded-sm border border-zinc-700 bg-transparent px-4 py-2 file:mr-4 file:rounded-sm file:border-0 file:bg-orange-700 file:px-4 file:py-2 file:text-white hover:file:bg-orange-800 file:cursor-pointer"
+					class="w-full rounded-sm border border-zinc-700 bg-transparent px-4 py-2 file:mr-4 file:cursor-pointer file:rounded-sm file:border-0 file:bg-orange-700 file:px-4 file:py-2 file:text-white hover:file:bg-orange-800"
 				/>
 
 				{#if csvError}
-					<p class="mt-1 text-sm text-red-400">{csvError}</p>
+					<p class="mt-1 text-sm text-red-600">{csvError}</p>
 				{/if}
 			</div>
 
@@ -352,9 +361,9 @@
 				</div>
 			{/if}
 
-			<div class="w-full rounded-sm  p-5">
-				<h3 class="mb-3 text-lg font-bold">CSV Format Requirements:</h3>
-				<ul class="list-inside list-disc space-y-2">
+			<div class="w-full rounded-sm bg-gray-50 p-4 md:p-5">
+				<h3 class="mb-3 text-base font-bold md:text-lg">CSV Format Requirements:</h3>
+				<ul class="list-inside list-disc space-y-2 text-sm md:text-base">
 					<li>Must have a header row with "dimension" and "question" columns</li>
 					<li>
 						The "dimension" column should contain one of these values: e, i, s, n, t, f, j, p
@@ -362,7 +371,7 @@
 					</li>
 					<li>Each dimension should have at least one question</li>
 					<li>
-						Example: <code class="rounded-xs bg-zinc-200 px-1"
+						Example: <code class="rounded-xs bg-zinc-200 px-1 text-xs md:text-sm"
 							>e,Do you enjoy meeting new people?</code
 						>
 					</li>
@@ -373,13 +382,15 @@
 {:else if usedPercentage >= 100}
 	<div
 		transition:fade={{ duration: 1000 }}
-		class="flex h-screen w-full items-center justify-center"
+		class="flex min-h-screen w-full items-center justify-center bg-zinc-100 px-4 py-8"
 	>
-		<div class="flex flex-col items-center justify-center gap-5 text-center">
-			<p class="text-3xl font-semibold">Your MBTI result is:</p>
-			<p class="text-4xl font-bold">{mbti_results}</p>
+		<div
+			class="flex flex-col items-center justify-center gap-5 rounded-lg bg-white p-6 text-center shadow-lg md:p-8"
+		>
+			<p class="text-2xl font-semibold md:text-3xl">Your MBTI result is:</p>
+			<p class="text-3xl font-bold md:text-4xl">{mbti_results}</p>
 			{#if recommendations[mbti_results.toLowerCase() as keyof typeof recommendations]}
-				<p class="text-xl font-medium italic">
+				<p class="text-lg font-medium italic md:text-xl">
 					"{name}, your fields in {mbti_results} are: {recommendations[
 						mbti_results.toLowerCase() as keyof typeof recommendations
 					]}"
@@ -387,7 +398,11 @@
 			{/if}
 
 			<button
-				onclick={() => {hasUploadedCsv = false; name = ''; phoneNumber = ''}}
+				onclick={() => {
+					hasUploadedCsv = false;
+					name = '';
+					phoneNumber = '';
+				}}
 				class="mt-8 rounded-sm bg-orange-700 px-5 py-2 font-medium text-white hover:bg-orange-800"
 			>
 				Start New Test
@@ -395,11 +410,14 @@
 		</div>
 	</div>
 {:else if questionsData.length === 0 || questionsData[type_of_question]?.questions.length === 0 || !isValidPhoneNumber}
-	<div class="flex h-screen w-full items-center justify-center">
-		<div class="flex flex-col items-center justify-center gap-5">
-			<p class="text-2xl font-semibold">No questions found</p>
-			<p class="text-lg">
-				Please make sure your CSV file is properly formatted and contains questions or your phone number is invalid.
+	<div class="flex min-h-screen w-full items-center justify-center bg-zinc-100 px-4 py-8">
+		<div
+			class="flex flex-col items-center justify-center gap-5 rounded-lg bg-white p-6 shadow-lg md:p-8"
+		>
+			<p class="text-xl font-semibold md:text-2xl">No questions found</p>
+			<p class="text-center text-base md:text-lg">
+				Please make sure your CSV file is properly formatted and contains questions or your phone
+				number is invalid.
 			</p>
 
 			<button
@@ -411,39 +429,46 @@
 		</div>
 	</div>
 {:else}
-	<div transition:fade={{ duration: 250 }} class="m-16 flex h-[38rem] max-w-full flex-col gap-5">
+	<div
+		transition:fade={{ duration: 250 }}
+		class="flex min-h-screen w-full flex-col gap-4 bg-zinc-100 px-4 py-6 md:gap-5 md:px-16 md:py-16"
+	>
 		<div class="mx-auto flex w-full max-w-3xl justify-between">
 			<div
-				class="flex h-12 w-12 items-center justify-center rounded-xs bg-gray-600 text-zinc-100 text-center text-2xl font-semibold"
+				class="flex h-10 w-10 items-center justify-center rounded-xs bg-gray-600 text-center text-lg font-semibold text-zinc-100 md:h-12 md:w-12 md:text-2xl"
 			>
 				<p>{questionsData[type_of_question].dimension.toUpperCase()}</p>
 			</div>
 
 			<button
-				onclick={() => {hasUploadedCsv = false; name = ''; phoneNumber = ''}}
-				class="text-sm text-zinc-400 underline hover:text-white"
+				onclick={() => {
+					hasUploadedCsv = false;
+					name = '';
+					phoneNumber = '';
+				}}
+				class="text-sm text-zinc-600 underline hover:text-zinc-800"
 			>
 				Cancel Test
 			</button>
 		</div>
 
 		<div
-			class="mx-auto flex h-3/5 w-full max-w-3xl items-center justify-center rounded-sm bg-zinc-400 px-10 text-center text-wrap shadow-lg"
+			class="mx-auto flex min-h-[250px] w-full max-w-3xl items-center justify-center rounded-sm bg-white px-4 py-6 text-center shadow-lg md:min-h-[300px] md:px-10 md:py-8"
 		>
-			<p class="text-3xl font-semibold max-md:text-xl">
+			<p class="text-base leading-relaxed font-semibold md:text-3xl">
 				{questionsData[type_of_question].questions[number_of_questions]}
 			</p>
 		</div>
-		<div class="mx-auto flex h-2/5 w-full max-w-3xl gap-3 max-md:flex-col-reverse">
+		<div class="mx-auto flex w-full max-w-3xl flex-col gap-3 md:flex-row">
 			<button
 				onclick={handleNextQuestion}
-				class="grow cursor-pointer rounded-xs bg-red-300 px-3 text-2xl font-semibold active:scale-[0.98] active:transition-all"
+				class="order-2 grow cursor-pointer rounded-xs bg-red-300 px-3 py-4 text-base font-semibold transition-all active:scale-[0.98] md:order-1 md:text-2xl"
 				>No</button
 			>
 			<button
 				id="yes-button"
 				onclick={handleNextQuestion}
-				class="grow cursor-pointer rounded-xs bg-blue-300 px-3 text-2xl font-semibold active:scale-[0.98] active:transition-all"
+				class="order-1 grow cursor-pointer rounded-xs bg-blue-300 px-3 py-4 text-base font-semibold transition-all active:scale-[0.98] md:order-2 md:text-2xl"
 				>Yes</button
 			>
 		</div>
