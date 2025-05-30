@@ -492,7 +492,7 @@
 		<!-- percentage meter -->
 		<div class="mx-auto flex w-full max-w-3xl flex-col gap-2">
 			<div class="flex items-center justify-between text-sm font-normal">
-				<span id={labelId}> Question </span>
+				<span id={labelId}> Pertanyaan </span>
 				<span class="font-semibold">{value} %</span>
 			</div>
 			<Meter.Root

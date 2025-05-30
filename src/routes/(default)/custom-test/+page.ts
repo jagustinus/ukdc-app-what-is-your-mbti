@@ -6,7 +6,7 @@ export const load = async () => {
       intp: [
         'Theoretical Computer Science',
         'Research',
-        'Programming language design',
+        'Programming Language Design',
         'Machine Learning'
       ],
       entj: [
@@ -36,7 +36,7 @@ export const load = async () => {
         'Interactive Media'
       ],
       istj: ['Cybersecurity', 'Database Administration', 'Software QA', 'Systems Administration'],
-      isfj: ['Data Management', 'IT support', 'Technical Documentation', 'Digital Librarianship'],
+      isfj: ['Data Management', 'IT Support', 'Technical Documentation', 'Digital Librarianship'],
       estj: [
         'IT Operations Management',
         'Information Systems Security',
@@ -49,7 +49,7 @@ export const load = async () => {
         'Technical Account Management',
         'Digital Communication'
       ],
-      istp: ['Network Engineering', 'Hardware Development', 'Penetration testing', 'Robotics'],
+      istp: ['Network Engineering', 'Hardware Development', 'Penetration Testing', 'Robotics'],
       isfp: ['Digital Design', 'Web Development', 'Multimedia', 'Mobile App Development'],
       estp: [
         'Technical Sales',

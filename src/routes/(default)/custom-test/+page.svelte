@@ -302,30 +302,30 @@
 		>
 			<h1 class="text-2xl font-bold md:text-4xl">Custom MBTI Test</h1>
 			<p class="text-center text-base md:text-xl">
-				Upload your own CSV file with MBTI questions to start the test. The CSV must include
-				"dimension" and "question" columns.
+				Unggah file CSV Anda sendiri dengan pertanyaan-pertanyaan MBTI untuk memulai tes. CSV harus
+				menyertakan kolom "dimensi" dan "pertanyaan".
 			</p>
 
 			<div class="flex w-full flex-col gap-2">
-				<label for="name" class="text-sm font-medium md:text-base">Name</label>
+				<label for="name" class="text-sm font-medium md:text-base">Nama</label>
 				<input
 					bind:value={name}
-					placeholder="Enter your name"
+					placeholder="John Doe"
 					class="rounded-sm border-2 border-zinc-700 bg-transparent px-4 py-2 text-black placeholder:text-gray-500 focus:border-2 focus:border-gray-500 focus-visible:border-gray-500 active:border-gray-500"
 				/>
 			</div>
 
 			<div class="flex w-full flex-col gap-2">
-				<label for="phone_number" class="text-sm font-medium md:text-base">Phone Number</label>
+				<label for="phone_number" class="text-sm font-medium md:text-base">No Handphone</label>
 				<input
 					bind:value={phoneNumber}
-					placeholder="Enter your phone number"
+					placeholder="+6281234567890"
 					class="rounded-sm border-2 border-zinc-700 bg-transparent px-4 py-2 text-black placeholder:text-gray-500 focus:border-2 focus:border-gray-500 focus-visible:border-gray-500 active:border-gray-500"
 				/>
 				{#if isValidPhoneNumber}
-					<p class="mt-1 text-sm text-green-600">Phone number is valid.</p>
+					<p class="mt-1 text-sm text-green-600">Valid.</p>
 				{:else if !isValidPhoneNumber && phoneNumber.length > 0}
-					<p class="mt-1 text-sm text-red-600">Phone number is invalid.</p>
+					<p class="mt-1 text-sm text-red-600">Invalid.</p>
 				{/if}
 			</div>
 
@@ -364,14 +364,14 @@
 			<div class="w-full rounded-sm bg-gray-50 p-4 md:p-5">
 				<h3 class="mb-3 text-base font-bold md:text-lg">CSV Format Requirements:</h3>
 				<ul class="list-inside list-disc space-y-2 text-sm md:text-base">
-					<li>Must have a header row with "dimension" and "question" columns</li>
+					<li>Harus memiliki header row dengan nama kolom "dimension" dan "question".</li>
+					<li>Kolom "dimension" haurs mengandung nilai: e, i, s, n, t, f, j, p (lowercase).</li>
 					<li>
-						The "dimension" column should contain one of these values: e, i, s, n, t, f, j, p
-						(lowercase)
+						Setiap dimensi memiliki minimal satu, direkomendasikan jika total setiap dimensi adalah
+						ganjil. Misalnya total pertanyaan pada dimensi E dan I atau yang lainnya adalah ganjil.
 					</li>
-					<li>Each dimension should have at least one question</li>
 					<li>
-						Example: <code class="rounded-xs bg-zinc-200 px-1 text-xs md:text-sm"
+						Contoh: <code class="rounded-xs bg-zinc-200 px-1 text-xs md:text-sm"
 							>e,Do you enjoy meeting new people?</code
 						>
 					</li>
