@@ -33,25 +33,27 @@
 	<title>Home</title>
 </svelte:head>
 
-<div class="flex min-h-screen flex-col items-center justify-center bg-zinc-100 text-zinc-800">
-	<div class="max-w-3/4 md:max-w-xl">
-		<img src={logo} alt="logo" />
+<div
+	class="flex min-h-screen flex-col items-center justify-center bg-zinc-100 px-4 py-8 text-zinc-800 md:px-8"
+>
+	<div class="mb-6 max-w-3/4 md:max-w-xl">
+		<img src={logo} alt="logo" class="h-auto w-full" />
 	</div>
-	<p class="m-2 mt-4 text-center text-4xl font-bold">Mulai Tes Sekarang</p>
-	<p class="m-2 mt-6 text-center text-xl font-medium">
+	<p class="mb-4 text-center text-2xl font-bold md:text-4xl">Mulai Tes Sekarang</p>
+	<p class="mb-8 max-w-2xl text-center text-base leading-relaxed font-medium md:text-xl">
 		Cari tahu tipe kepribadianmu dan pahami cara berpikir serta berinteraksi yang paling alami
 		untukmu.
 	</p>
 	<div
-		class="mt-8 flex w-full max-w-7xl items-center justify-between gap-10 px-2 max-md:flex-col-reverse max-md:gap-2"
+		class="flex w-full max-w-7xl flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-6"
 	>
 		{#each content as item, index (index)}
 			<button
 				onclick={() => navigateTo(item.url)}
-				class="flex w-1/3 cursor-pointer flex-col gap-3 rounded-md border-2 border-gray-600 p-6 text-left transition-all duration-500 ease-in-out hover:border-orange-600 focus:border-orange-600 focus:ring-2 focus:ring-orange-300 focus:outline-none max-md:w-full"
+				class="flex w-full cursor-pointer flex-col gap-3 rounded-md border-2 border-gray-600 bg-white p-4 text-left shadow-sm transition-all duration-500 ease-in-out hover:border-orange-600 hover:shadow-md focus:border-orange-600 focus:ring-2 focus:ring-orange-300 focus:outline-none md:w-1/3 md:p-6"
 			>
-				<p class="text-xl font-bold">{item.title}</p>
-				<p class="text-base">{item.description}</p>
+				<p class="text-lg font-bold md:text-xl">{item.title}</p>
+				<p class="text-sm leading-relaxed md:text-base">{item.description}</p>
 				<div class="flex items-center gap-1">
 					<span class="font-medium text-orange-600">Lihat Detail</span>
 					<ArrowUpRight class="h-4 w-4 text-orange-600" />
