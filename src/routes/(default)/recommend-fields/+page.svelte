@@ -14,11 +14,9 @@
 	<div
 		class="flex w-full max-w-md flex-col items-center text-center sm:max-w-lg md:max-w-xl lg:max-w-2xl"
 	>
-		<h1 class="mb-4 text-xl font-bold sm:text-2xl md:text-3xl">
-			Rekomendasi Pekerjaan Informatika
-		</h1>
+		<h1 class="mb-4 text-xl font-bold sm:text-2xl md:text-3xl">Rekomendasi Bidang Informatika</h1>
 		<p class="mb-6 text-sm sm:text-base">
-			Cek tipe MBTI mu, dan lihat rekomendasi pekerjaan yang cocok pada bidang Informatika
+			Cek tipe MBTI mu, dan lihat rekomendasi bidang yang cocok pada Informatika
 		</p>
 		<div class="flex w-full flex-col items-center justify-center gap-4 sm:flex-row sm:gap-2">
 			<input
@@ -42,7 +40,7 @@
 				<p class="text-2xl font-semibold sm:text-3xl">Tipe MBTI mu</p>
 				<p class="text-3xl font-bold sm:text-4xl">{mbti.toUpperCase()}</p>
 				<p class="px-4 text-lg font-medium italic sm:text-xl">
-					"Jurusan pada tipe {mbti.toUpperCase()} yaitu, {data.recommend_fields[
+					"Bidang yang cocok pada tipe {mbti.toUpperCase()} yaitu, {data.recommend_fields[
 						mbti.toLowerCase() as keyof typeof data.recommend_fields
 					]}"
 				</p>
