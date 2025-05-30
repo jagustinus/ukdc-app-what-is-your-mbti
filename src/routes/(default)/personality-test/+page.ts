@@ -34,7 +34,7 @@ export const load = () => {
     {
       question: 'Setelah nongkrong, kamu malah makin semangat atau capek?',
       answer: {
-        answer_yes: 'Nongkrong bikin aku makin hidup',
+        answer_yes: 'Nongkrong bikin saya makin hidup',
         answer_no: 'Habis sosialisasi malah butuh istirahat'
       }
     },

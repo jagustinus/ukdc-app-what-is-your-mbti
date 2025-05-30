@@ -1,70 +1,67 @@
 export const load = () => {
-	return {
-		recommend_fields: {
-			intj: ['artificial intelligence', 'data science', 'algorithms', 'systems architecture'],
-			intp: [
-				'theoretical computer science',
-				'research',
-				'programming language design',
-				'machine learning'
-			],
-			entj: [
-				'it project management',
-				'enterprise architecture',
-				'systems analysis',
-				'business intelligence'
-			],
-			entp: [
-				'innovation research',
-				'technology entrepreneurship',
-				'systems design',
-				'emerging technologies'
-			],
-
-			infj: ['digital ethics', 'information science', 'ux research', 'educational technology'],
-			infp: ['ui/ux design', 'human-computer interaction', 'game development', 'digital media'],
-			enfj: [
-				'information systems management',
-				'technology training',
-				'digital marketing',
-				'knowledge management'
-			],
-			enfp: [
-				'creative technology',
-				'digital content creation',
-				'user experience',
-				'interactive media'
-			],
-
-			istj: ['cybersecurity', 'database administration', 'software qa', 'systems administration'],
-			isfj: ['data management', 'it support', 'technical documentation', 'digital librarianship'],
-			estj: [
-				'it operations management',
-				'information systems security',
-				'enterprise systems',
-				'technical project management'
-			],
-			esfj: [
-				'customer relationship management systems',
-				'it service management',
-				'technical account management',
-				'digital communication'
-			],
-
-			istp: ['network engineering', 'hardware development', 'penetration testing', 'robotics'],
-			isfp: ['digital design', 'web development', 'multimedia', 'mobile app development'],
-			estp: [
-				'technical sales',
-				'technology implementation',
-				'it consultancy',
-				'systems integration'
-			],
-			esfp: [
-				'technology demonstration',
-				'technical support',
-				'social media technology',
-				'digital marketing systems'
-			]
-		}
-	};
+  return {
+    recommend_fields: {
+      intj: ['Artificial Intelligence', 'Data Science', 'Algorithms', 'Systems Architecture'],
+      intp: [
+        'Theoretical Computer Science',
+        'Research',
+        'Programming language design',
+        'Machine Learning'
+      ],
+      entj: [
+        'IT Project Management',
+        'Enterprise Architecture',
+        'Systems Analysis',
+        'Business Intelligence'
+      ],
+      entp: [
+        'Innovation Research',
+        'Technology Entrepreneurship',
+        'Systems Design',
+        'Emerging Technologies'
+      ],
+      infj: ['Digital Ethics', 'Information Science', 'UX Research', 'Educational Technology'],
+      infp: ['UI/UX design', 'Human-Computer Interaction', 'Game Development', 'Digital media'],
+      enfj: [
+        'Information Systems Management',
+        'Technology Training',
+        'Digital Marketing',
+        'Knowledge Management'
+      ],
+      enfp: [
+        'Creative Technology',
+        'Digital Content Creation',
+        'User Experience',
+        'Interactive Media'
+      ],
+      istj: ['Cybersecurity', 'Database Administration', 'Software QA', 'Systems Administration'],
+      isfj: ['Data Management', 'IT support', 'Technical Documentation', 'Digital Librarianship'],
+      estj: [
+        'IT Operations Management',
+        'Information Systems Security',
+        'Enterprise Systems',
+        'Technical Project Management'
+      ],
+      esfj: [
+        'Customer Relationship Management Systems',
+        'IT Service Management',
+        'Technical Account Management',
+        'Digital Communication'
+      ],
+      istp: ['Network Engineering', 'Hardware Development', 'Penetration testing', 'Robotics'],
+      isfp: ['Digital Design', 'Web Development', 'Multimedia', 'Mobile App Development'],
+      estp: [
+        'Technical Sales',
+        'Technology Implementation',
+        'IT Consultancy',
+        'Systems Integration'
+      ],
+      esfp: [
+        'Technology Demonstration',
+        'Technical Support',
+        'Social Media Technology',
+        'Digital Marketing Systems'
+      ]
+    }
+  };
 };
